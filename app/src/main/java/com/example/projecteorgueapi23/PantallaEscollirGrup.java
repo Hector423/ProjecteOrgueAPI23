@@ -1,5 +1,6 @@
 package com.example.projecteorgueapi23;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,27 +23,22 @@ public class PantallaEscollirGrup extends AppCompatActivity {
         botoC = findViewById(R.id.botoGrupC);
         botoD = findViewById(R.id.botoGrupD);
 
-        botoA.setOnClickListener(v -> grupA());
-        botoB.setOnClickListener(v -> grupB());
-        botoC.setOnClickListener(v -> grupC());
-        botoD.setOnClickListener(v -> grupD());
+
 
         }
-    private void grupA(){
 
-    }
+        public void cambiarVentana(View v){
+        PantallaInici pantallaInici = new PantallaInici(this);
 
-    private void grupB(){
-
-    }
-
-    private void grupC(){
-
-    }
-
-    private void grupD(){
-
-
+        if(v==botoA){
+            startActivity(new Intent(this, PantallaInici.class));
+        }else if(v==botoB){
+            startActivity(new Intent(this, PantallaInici.class));
+        }else if(v==botoC){
+            startActivity(new Intent(this, PantallaInici.class));
+        }else if(v==botoD){
+            startActivity(new Intent(this, PantallaInici.class));
+        }
     }
 
 }
