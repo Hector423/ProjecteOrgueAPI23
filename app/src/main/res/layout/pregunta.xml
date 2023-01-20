@@ -3,38 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#BAF872">
 
     <TextView
         android:id="@+id/textPregunta"
-        android:layout_width="268dp"
-        android:layout_height="74dp"
+        android:layout_width="371dp"
+        android:layout_height="99dp"
         android:editable="false"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="49dp" />
+        android:text="Busqueu aquest carreu i situeu-lo al plànol."
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="134dp" />
 
     <RadioGroup
         android:id="@+id/caixaRespostes"
         android:layout_width="333dp"
         android:layout_height="201dp"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="399dp" />
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="627dp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="640dp" />
+        tools:layout_editor_absoluteX="353dp"
+        tools:layout_editor_absoluteY="922dp" />
 
     <ImageView
         android:id="@+id/imatgePregunta"
         android:layout_width="206dp"
         android:layout_height="187dp"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="162dp"
+        tools:layout_editor_absoluteX="297dp"
+        tools:layout_editor_absoluteY="312dp"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

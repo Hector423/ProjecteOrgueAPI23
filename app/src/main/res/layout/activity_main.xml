@@ -6,43 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <Button
         android:id="@+id/botoInici"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="444dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576" />
 
     <ImageView
-        android:id="@+id/imatge"
-        android:layout_width="600dp"
-        android:layout_height="944dp"
-        app:srcCompat="@drawable/orgue_esglesia_sant_joan_valls"
-        tools:layout_editor_absoluteX="-95dp"
-        tools:layout_editor_absoluteY="-107dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="329dp"
-        android:layout_height="111dp"
-        android:text="Benvinguts a la visita. Aquesta aplicació us anira guiant per a descobrir aquest instrument."
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="167dp" />
+        android:id="@+id/imageView"
+        android:layout_width="1013dp"
+        android:layout_height="1402dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.494"
+        app:srcCompat="@drawable/granorgue"
+        tools:layout_editor_absoluteX="-51dp" />
 
     <EditText
-        android:id="@+id/nomAlumne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/AfegirNom"
+        android:layout_width="406dp"
+        android:layout_height="113dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nom"
-        android:textColor="#000000"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="336dp" />
+        android:text="Name"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.431" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

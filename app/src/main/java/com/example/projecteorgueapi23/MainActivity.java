@@ -18,13 +18,10 @@ public class MainActivity extends AppCompatActivity {
         iniciarPreguntes = findViewById(R.id.botoInici);
 
         iniciarPreguntes.setOnClickListener(v -> openPreguntes());
-
     }
 
     public void openPreguntes(){
-        Intent intent = new Intent(this, PantallaPreguntes.class);
+        Intent intent = new Intent(this, PantallaEscollirGrup.class);
         startActivity(intent);
     }
-
-
 }
