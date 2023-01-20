@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preguntas>
+    <pregunta>
+        <id>1.2</id>
+        <preg>Busqueu aquest carreu i situeu-lo al plànol</preg>
+        <icon></icon>
+        <respuestaCorrecta url="app/src/main/res/drawable/fila_3_columna_1.png"/>
+        <respuesta src="app/src/main/res/drawable/fila_1_columna_1.png" />
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+    </pregunta>
+    <pregunta>
+        <id>2.2</id>
+        <preg>Quants escuts de la ciutat has pogut comptabilitzar al llarg de la visita?</preg>
+        <icon></icon>
+        <respuestaCorrecta>més de 40</respuestaCorrecta>
+        <respuesta>entre 10 i 20</respuesta>
+        <respuesta>entre 21 i 40</respuesta>
+    </pregunta>
+    <pregunta>
+        <id>3.2</id>
+        <preg>Segons la imatge, on creieu que estava situat l'orgue anterior? Situeu-lo al plànol</preg>
+        <icon></icon>
+        <respuestaCorrecta></respuestaCorrecta>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+    </pregunta>
+    <pregunta>
+        <id>3.6</id>
+        <preg>Observeu bé la imatge i responeu</preg>
+        <icon></icon>
+        <respuestaCorrecta>suspès en una balconada</respuestaCorrecta>
+        <respuesta>està arran de terra</respuesta>
+    </pregunta>
+    <pregunta>
+        <id>4.4</id>
+        <preg>Quina és la relació entre el disseny de la façana del nou orgue i la ciutat de Valls?</preg>
+        <icon></icon>
+        <respuestaCorrecta>els castells i el campanar</respuestaCorrecta>
+        <respuesta>els calçots i els castells</respuesta>
+        <respuesta>el campanar i els gegants</respuesta>
+    </pregunta>
+    <pregunta>
+        <id>5.2</id>
+        <preg>Aneu a la ubicació que mostra el plànol i obriu la nova
+            informació.</preg>
+        <icon></icon>
+        <respuestaCorrecta></respuestaCorrecta>
+        <respuesta></respuesta>
+    </pregunta>
+    <pregunta>
+        <id>5.4</id>
+        <preg>Llegiu i relacioneu cada tipus d’orgue amb la definició que
+            creieu que li correspon.</preg>
+        <icon></icon>
+        <respuestaA1>orgue portatiu</respuestaA1>
+        <respuestaA2>es porta a sobre mentre el toca</respuestaA2>
+        <respuestaB1>orgue positiu</respuestaB1>
+        <respuestaB2>es pot posar a diferents llocs</respuestaB2>
+        <respuestaC1>orgue principal</respuestaC1>
+        <respuestaC2>té només un teclat però ja té dimensions considerables</respuestaC2>
+        <respuestaD1>gran orgue</respuestaD1>
+        <respuestaD2>té milers de tubs i necessita un espai gran per a posar-lo</respuestaD2>
+    </pregunta>
+    <pregunta>
+        <id>6.5</id>
+        <preg>Mireu bé la façana de l’orgue i trieu de totes aquestes
+            parts les que són visibles.</preg>
+        <icon></icon>
+        <respuestaCorrecta>
+            <nombre>poms dels registres</nombre>
+            <img></img>
+        </respuestaCorrecta>
+        <respuestaCorrecta>
+            <nombre>tubs</nombre>
+            <img></img>
+        </respuestaCorrecta>
+        <respuestaCorrecta>
+            <nombre>manuals(teclats)</nombre>
+            <img></img>
+        </respuestaCorrecta>
+        <respuestaCorrecta>
+            <nombre>pedaler</nombre>
+            <img></img>
+        </respuestaCorrecta>
+        <respuestaCorrecta>
+            <nombre>pedal expressiu</nombre>
+            <img></img>
+        </respuestaCorrecta>
+        <respuesta>
+            <nombre>barnilles</nombre>
+            <img></img>
+        </respuesta>
+        <respuesta>
+            <nombre>caixa de l'expressiu</nombre>
+            <img></img>
+        </respuesta>
+        <respuesta>
+            <nombre>manxes</nombre>
+            <img></img>
+        </respuesta>
+        <respuesta>
+            <nombre>secret</nombre>
+            <img></img>
+        </respuesta>
+    </pregunta>
+    <pregunta>
+        <id>7.4</id>
+        <preg>Quina és la diferència entre orguener i organista?</preg>
+        <icon></icon>
+        <respuestaCorrecta>L’orguener construeix i l’organista toca.</respuestaCorrecta>
+        <respuesta>No hi ha cap diferència, és el mateix.</respuesta>
+        <respuesta>L’organista construeix i l’orguener toca.</respuesta>
+        <respuesta>L’orguener toca molt i l’organista no toca gaire.</respuesta>
+    </pregunta>
+</preguntas>
