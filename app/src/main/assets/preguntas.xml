@@ -4,7 +4,7 @@
         <id>1.2</id>
         <preg>Busqueu aquest carreu i situeu-lo al plànol</preg>
         <icon></icon>
-        <respuestaCorrecta url="app/src/main/res/drawable/fila_3_columna_1.png"/>
+        <respuestaCorrecta url="app/src/main/res/drawable/fila_3_columna_1.png">app/src/main/res/drawable/fila_3_columna_1.png</respuestaCorrecta>
         <respuesta src="app/src/main/res/drawable/fila_1_columna_1.png" />
         <respuesta></respuesta>
         <respuesta></respuesta>

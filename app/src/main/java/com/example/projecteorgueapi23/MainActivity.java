@@ -6,16 +6,22 @@ import androidx.core.content.res.ResourcesCompat;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -29,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button iniciarPreguntes;
     private ImageButton imageButton;
+    private Uri uriImage;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         iniciarPreguntes = findViewById(R.id.botoInici);
         imageButton = findViewById(R.id.imageButton);
+        imageView = findViewById(R.id.imageView2);
 
         iniciarPreguntes.setOnClickListener(v -> openPreguntes());
-
         try {
             InputStream input = getAssets().open("preguntas.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -48,12 +56,14 @@ public class MainActivity extends AppCompatActivity {
             NodeList nList = doc.getElementsByTagName("pregunta");
             for(int i =0;i<nList.getLength();i++){
                 if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
-                    Element elm = (Element)nList.item(i);
-                    String string = getNodeValue("respuestaCorrecta", elm);
-                    int id = getResources().getIdentifier(string, "drawable", getPackageName());
-                    Resources res = getResources();
-                    Drawable drawable = ResourcesCompat.getDrawable(res, id, null);
-                    imageButton.setBackground(drawable);;
+
+                    Element elm = (Element) nList.item(i);
+                    String a = getNodeValue("id", elm);
+                    if(a.equals("1.2")) {
+                        String string = getNodeValue("respuestaCorrecta", elm);
+                        uriImage = Uri.parse("android.src=/" + string);
+                        imageButton.setImageURI(uriImage);
+                    }
                 }
             }
 
