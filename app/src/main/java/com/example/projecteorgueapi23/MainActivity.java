@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             for(int i =0;i<nList.getLength();i++){
                 if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
                     Element elm = (Element)nList.item(i);
-                    String string = getNodeValue("respuestaCorrecta", elm);
+                    String string = getNodeValue("respuesta", elm);
                     int id = getResources().getIdentifier(string, "drawable", getPackageName());
                     Resources res = getResources();
                     Drawable drawable = ResourcesCompat.getDrawable(res, id, null);
