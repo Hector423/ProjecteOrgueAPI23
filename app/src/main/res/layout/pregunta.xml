@@ -8,35 +8,49 @@
 
     <TextView
         android:id="@+id/textPregunta"
-        android:layout_width="371dp"
-        android:layout_height="99dp"
+        android:layout_width="630dp"
+        android:layout_height="156dp"
         android:editable="false"
-        android:text="Busqueu aquest carreu i situeu-lo al plànol."
-        android:textSize="34sp"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="134dp" />
+        android:text="Texto"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.114" />
 
     <RadioGroup
         android:id="@+id/caixaRespostes"
         android:layout_width="333dp"
         android:layout_height="201dp"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="627dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.563" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="siguienePregunta"
         android:text="Button"
-        tools:layout_editor_absoluteX="353dp"
-        tools:layout_editor_absoluteY="922dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781" />
 
     <ImageView
         android:id="@+id/imatgePregunta"
         android:layout_width="206dp"
         android:layout_height="187dp"
-        tools:layout_editor_absoluteX="297dp"
-        tools:layout_editor_absoluteY="312dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.284"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

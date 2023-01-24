@@ -37,35 +37,39 @@ public class MainActivity extends AppCompatActivity {
 
         iniciarPreguntes = findViewById(R.id.botoInici);
         imageButton = findViewById(R.id.imageButton);
+        iniciarPreguntes.setOnClickListener(v ->
+        {
+            openPreguntes();
+        });
 
-        iniciarPreguntes.setOnClickListener(v -> openPreguntes());
-
-        try {
-            InputStream input = getAssets().open("preguntas.xml");
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(input);
-            NodeList nList = doc.getElementsByTagName("pregunta");
-            for(int i =0;i<nList.getLength();i++){
-                if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
-                    Element elm = (Element)nList.item(i);
-                    String string = getNodeValue("respuesta", elm);
-                    int id = getResources().getIdentifier(string, "drawable", getPackageName());
-                    Resources res = getResources();
-                    Drawable drawable = ResourcesCompat.getDrawable(res, id, null);
-                    imageButton.setBackground(drawable);;
-                }
-            }
-
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
+//        iniciarPreguntes.setOnClickListener(v -> openPreguntes());
+//
+//        try {
+//            InputStream input = getAssets().open("preguntas.xml");
+//            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+//            DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
+//            Document doc = docBuilder.parse(input);
+//            NodeList nList = doc.getElementsByTagName("pregunta");
+//            for(int i =0;i<nList.getLength();i++){
+//                if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
+//                    Element elm = (Element)nList.item(i);
+//                    String string = getNodeValue("respuesta", elm);
+//                    int id = getResources().getIdentifier(string, "drawable", getPackageName());
+//                    Resources res = getResources();
+//                    Drawable drawable = ResourcesCompat.getDrawable(res, id, null);
+//                    imageButton.setBackground(drawable);;
+//                }
+//            }
+//
+//
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ParserConfigurationException e) {
+//            e.printStackTrace();
+//        } catch (SAXException e) {
+//            e.printStackTrace();
+//        }
 
 
     }
@@ -85,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
+
+
     public void openPreguntes(){
-        Intent intent = new Intent(this, PantallaEscollirGrup.class);
+        Intent intent = new Intent(this, PreguntasRespuestas.class);
         startActivity(intent);
     }
 }
