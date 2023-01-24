@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class MainActivity extends AppCompatActivity {
 
     private Button iniciarPreguntes;
+    private View nom;
     private ImageButton imageButton;
     private Uri uriImage;
     private ImageView imageView;
@@ -43,57 +45,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
-        imageButton = findViewById(R.id.imageButton);
-        imageView = findViewById(R.id.imageView2);
-
-        iniciarPreguntes.setOnClickListener(v -> openPreguntes());
-        try {
-            InputStream input = getAssets().open("preguntas.xml");
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(input);
-            NodeList nList = doc.getElementsByTagName("pregunta");
-            for(int i =0;i<nList.getLength();i++){
-                if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
-
-                    Element elm = (Element) nList.item(i);
-                    String a = getNodeValue("id", elm);
-                    if(a.equals("1.2")) {
-                        String string = getNodeValue("respuestaCorrecta", elm);
-                        uriImage = Uri.parse("android.src=/" + string);
-                        imageButton.setImageURI(uriImage);
-                    }
-                }
-            }
-
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
-
+        iniciarPreguntes.setOnClickListener(v ->
+                {
+                         openPreguntes();
+                });
 
     }
-    protected String getNodeValue(String tag, Element element) {
-        NodeList nodeList = element.getElementsByTagName(tag);
-        Node node = nodeList.item(0);
-        if(node!=null){
-            if(node.hasChildNodes()){
-                Node child = node.getFirstChild();
-                while (child!=null){
-                    if(child.getNodeType() == Node.TEXT_NODE){
-                        return  child.getNodeValue();
-                    }
-                }
-            }
-        }
-        return "";
-    }
+
 
     public void openPreguntes(){
         Intent intent = new Intent(this, PantallaEscollirGrup.class);
