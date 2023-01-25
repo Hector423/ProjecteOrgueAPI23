@@ -12,22 +12,34 @@
         android:id="@+id/spinner5"
         android:layout_width="197dp"
         android:layout_height="47dp"
-        tools:layout_editor_absoluteX="452dp"
-        tools:layout_editor_absoluteY="764dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
 
     <Spinner
         android:id="@+id/spinner4"
         android:layout_width="197dp"
         android:layout_height="47dp"
-        tools:layout_editor_absoluteX="449dp"
-        tools:layout_editor_absoluteY="666dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54" />
 
     <Spinner
         android:id="@+id/spinner3"
         android:layout_width="197dp"
         android:layout_height="47dp"
-        tools:layout_editor_absoluteX="449dp"
-        tools:layout_editor_absoluteY="479dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.378" />
 
     <TextView
         android:id="@+id/textView3"
@@ -35,8 +47,11 @@
         android:layout_height="102dp"
         android:text="text exemple"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="127dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
 
     <TextView
         android:id="@+id/textView4"
@@ -92,7 +107,23 @@
         android:id="@+id/spinner2"
         android:layout_width="197dp"
         android:layout_height="47dp"
-        tools:layout_editor_absoluteX="449dp"
-        tools:layout_editor_absoluteY="563dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
+
+    <Button
+        android:id="@+id/nextPregRel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.836" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

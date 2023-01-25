@@ -8,9 +8,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -25,22 +22,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-public class PreguntasRespuestas extends AppCompatActivity {
-
-    private TextView textPregunta;
-    private ImageView imagen;
-    private RadioGroup rgp;
+public class PreguntasRelacionar extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pregunta);
-
-        textPregunta = findViewById(R.id.textPregunta);
-        imagen = findViewById(R.id.imatgePregunta);
-        rgp= (RadioGroup) findViewById(R.id.caixaRespostes);
-        RadioGroup.LayoutParams rprms;
-
+        setContentView(R.layout.activity_pregunta_relacionar);
         try {
             InputStream input = getAssets().open("preguntas.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -50,18 +37,18 @@ public class PreguntasRespuestas extends AppCompatActivity {
             if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
                 Element elm = (Element)nList.item(GlobalVariables.cont);
                 String string = getNodeValue("preg", elm);
-                textPregunta.setText(string);
+//                textPregunta.setText(string);
+//
+//                if(elm.equals(nList.item(2))){
+//                    Resources res = getResources();
+//                    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.fila_1_columna_2, null);
+//                    imagen.setImageDrawable(drawable);
+//                }
 
-                if(elm.equals(nList.item(2))){
-                    Resources res = getResources();
-                    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.fila_1_columna_2, null);
-                    imagen.setImageDrawable(drawable);
-                }
-
-                if(elm.equals(nList.item(5))){
-                    finish();
-                    siguienePreguntaIntent();
-                }
+//                if(elm.equals(nList.item(5))){
+//                    finish();
+//                    siguienePreguntaIntent();
+//                }
             }
 
         } catch (IOException e) {
