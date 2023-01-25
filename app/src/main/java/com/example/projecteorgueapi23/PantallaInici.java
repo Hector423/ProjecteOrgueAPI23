@@ -24,7 +24,7 @@ public class PantallaInici extends AppCompatActivity {
     }
 
     public void openPantallaInformació(){
-        Intent intent = new Intent(this, PantallaEscollirGrup.class);
+        Intent intent = new Intent(this, PantallaInfo.class);
         startActivity(intent);
     }
 
