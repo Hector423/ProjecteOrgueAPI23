@@ -23,22 +23,24 @@ public class PantallaEscollirGrup extends AppCompatActivity {
         botoC = findViewById(R.id.botoGrupC);
         botoD = findViewById(R.id.botoGrupD);
 
+        botoA.setOnClickListener(v -> {
+            openPantallaInici();
+        });
+        botoB.setOnClickListener(v -> {
+            openPantallaInici();
+        });
+        botoC.setOnClickListener(v -> {
+            openPantallaInici();
+        });
+        botoD.setOnClickListener(v -> {
+            openPantallaInici();
+        });
 
 
         }
 
-        public void cambiarVentana(View v){
-        PantallaInici pantallaInici = new PantallaInici(this);
-
-        if(v==botoA){
-            startActivity(new Intent(this, PantallaInici.class));
-        }else if(v==botoB){
-            startActivity(new Intent(this, PantallaInici.class));
-        }else if(v==botoC){
-            startActivity(new Intent(this, PantallaInici.class));
-        }else if(v==botoD){
-            startActivity(new Intent(this, PantallaInici.class));
-        }
+    public void openPantallaInici() {
+        Intent intent = new Intent(this, PantallaInici.class);
+        startActivity(intent);
     }
-
 }
