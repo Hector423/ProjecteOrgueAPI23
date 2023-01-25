@@ -20,7 +20,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PantallarConfirmarUbicacio"
+            android:name=".PreguntasRelacionar"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PreguntaClickImagenes"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PreguntasRespuestas"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

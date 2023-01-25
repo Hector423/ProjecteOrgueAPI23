@@ -47,16 +47,20 @@ public class MainActivity extends AppCompatActivity {
 
         nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
+
         iniciarPreguntes.setOnClickListener(v ->
                 {
                          openPreguntes();
                 });
 
+
     }
 
 
+
+
     public void openPreguntes(){
-        Intent intent = new Intent(this, PantallaEscollirGrup.class);
+        Intent intent = new Intent(this, PreguntasRespuestas.class);
         startActivity(intent);
     }
 }
