@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openPreguntes(){
-        Intent intent = new Intent(this, PreguntasRespuestas.class);
+        Intent intent = new Intent(this, PantallaPreguntaMultiple.class);
         startActivity(intent);
     }
 }
