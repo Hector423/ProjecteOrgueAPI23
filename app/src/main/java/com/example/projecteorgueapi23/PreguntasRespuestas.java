@@ -1,14 +1,14 @@
 package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -28,9 +28,14 @@ import javax.xml.parsers.ParserConfigurationException;
 public class PreguntasRespuestas extends AppCompatActivity {
 
     private TextView textPregunta;
+    private Button botonRespuesta, btnComprova;
     private ImageView imagen;
     private RadioGroup rgp;
+    private RadioButton radioButton;
+    private int contRadio = 0;
+    private boolean comprovado = false;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,27 +43,69 @@ public class PreguntasRespuestas extends AppCompatActivity {
 
         textPregunta = findViewById(R.id.textPregunta);
         imagen = findViewById(R.id.imatgePregunta);
-        rgp= (RadioGroup) findViewById(R.id.caixaRespostes);
-        RadioGroup.LayoutParams rprms;
+        rgp = findViewById(R.id.caixaRespostes);
+        botonRespuesta = findViewById(R.id.botonRespuesta);
+        btnComprova = findViewById(R.id.btnComprovaRes);
 
         try {
+            // Leemos XML con DOM
             InputStream input = getAssets().open("preguntas.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(input);
             NodeList nList = doc.getElementsByTagName("pregunta");
+
+            // Comprobamos que pregunta nos ha salido y dependiendo de cual ponemos sus respectivas preguntas
             if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
                 Element elm = (Element)nList.item(GlobalVariables.cont);
-                String string = getNodeValue("preg", elm);
-                textPregunta.setText(string);
+                String pregunta = getNodeValue("preg", elm);
+                textPregunta.setText(pregunta);
 
-                if(elm.equals(nList.item(2))){
-                    Resources res = getResources();
-                    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.fila_1_columna_2, null);
-                    imagen.setImageDrawable(drawable);
+                contRadio = elm.getElementsByTagName("respuesta").getLength();
+                for(int i = 0; i<contRadio;i++) {
+                    radioButton = new RadioButton(this);
+                    radioButton.setId(i);
+                    radioButton.setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
+                    rgp.addView(radioButton);
                 }
 
-                if(elm.equals(nList.item(5))){
+                // Se commprueba si las respuestas son correctas
+                if(elm.equals(nList.item(0))){
+                    btnComprova.setOnClickListener(view -> {
+                        int id = rgp.getCheckedRadioButtonId();
+                        if(id == 2){
+                            for (int i = 0; i < rgp.getChildCount(); i++) {
+                                rgp.getChildAt(i).setEnabled(false);
+                            }
+                            botonRespuesta.setEnabled(true);
+                            comprovado = true;
+                        }
+                    });
+                }else if(elm.equals(nList.item(1))){
+                    btnComprova.setOnClickListener(view -> {
+                        int id = rgp.getCheckedRadioButtonId();
+                        if(id == 1){
+                            for (int i = 0; i < rgp.getChildCount(); i++) {
+                                rgp.getChildAt(i).setEnabled(false);
+                            }
+                            botonRespuesta.setEnabled(true);
+                            comprovado = true;
+                        }
+                    });
+                }else if(elm.equals(nList.item(2))){
+                    btnComprova.setOnClickListener(view -> {
+                        int id = rgp.getCheckedRadioButtonId();
+                        if(id == 1){
+                            for (int i = 0; i < rgp.getChildCount(); i++) {
+                                rgp.getChildAt(i).setEnabled(false);
+                            }
+                            botonRespuesta.setEnabled(true);
+                            comprovado = true;
+                        }
+                    });
+                }
+
+                if(elm.equals(nList.item(3))){
                     finish();
                     siguienePreguntaIntent();
                 }
@@ -74,6 +121,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
 
 
     }
+
+    // Obtiene el nodo del xml pasado por parametro y devolvemos el hijo
     protected String getNodeValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag);
         Node node = nodeList.item(0);
@@ -90,13 +139,19 @@ public class PreguntasRespuestas extends AppCompatActivity {
         return "";
     }
 
+    // Pasamos a la siguiente pregunta
     public void siguienePregunta(View v){
-        finish();
-        startActivity(getIntent());
-        GlobalVariables.cont++;
+        if(comprovado == true){
+            finish();
+            startActivity(getIntent());
+            GlobalVariables.cont++;
+        }else{
+
+        }
+
     }
 
-    public void siguienePreguntaIntent(){
+    public void siguienePreguntaIntent() {
         finish();
         Intent intent = new Intent(this, PreguntasRelacionar.class);
         startActivity(intent);
