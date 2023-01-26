@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ProjecteOrgueAPI23</string>
+
+    <string-array name="respuestasArray">
+        <item></item>
+        <item>es porta a sobre mentre el toca</item>
+        <item>es pot posar a diferents llocs</item>
+        <item>té només un teclat però ja té dimensions considerables</item>
+        <item>té milers de tubs i necessita un espai gran per a posar-lo</item>
+    </string-array>
 </resources>

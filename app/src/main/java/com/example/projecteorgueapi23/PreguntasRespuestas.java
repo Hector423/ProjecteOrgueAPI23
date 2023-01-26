@@ -1,12 +1,9 @@
 package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,26 +48,29 @@ public class PreguntasRespuestas extends AppCompatActivity {
         btnComprova = findViewById(R.id.btnComprovaRes);
 
         try {
+            // Leemos XML con DOM
             InputStream input = getAssets().open("preguntas.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(input);
             NodeList nList = doc.getElementsByTagName("pregunta");
 
+            // Comprobamos que pregunta nos ha salido y dependiendo de cual ponemos sus respectivas preguntas
             if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
                 Element elm = (Element)nList.item(GlobalVariables.cont);
                 String pregunta = getNodeValue("preg", elm);
                 textPregunta.setText(pregunta);
 
                 contRadio = elm.getElementsByTagName("respuesta").getLength();
+                for(int i = 0; i<contRadio;i++) {
+                    radioButton = new RadioButton(this);
+                    radioButton.setId(i);
+                    radioButton.setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
+                    rgp.addView(radioButton);
+                }
 
+                // Se commprueba si las respuestas son correctas
                 if(elm.equals(nList.item(0))){
-                    for(int i = 0; i<contRadio;i++) {
-                        radioButton = new RadioButton(this);
-                        radioButton.setId(i);
-                        radioButton.setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
-                        rgp.addView(radioButton);
-                    }
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 2){
@@ -82,12 +82,6 @@ public class PreguntasRespuestas extends AppCompatActivity {
                         }
                     });
                 }else if(elm.equals(nList.item(1))){
-                    for(int i = 0; i<contRadio;i++) {
-                        radioButton = new RadioButton(this);
-                        radioButton.setId(i);
-                        radioButton.setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
-                        rgp.addView(radioButton);
-                    }
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
@@ -99,12 +93,6 @@ public class PreguntasRespuestas extends AppCompatActivity {
                         }
                     });
                 }else if(elm.equals(nList.item(2))){
-                    for(int i = 0; i<contRadio;i++) {
-                        radioButton = new RadioButton(this);
-                        radioButton.setId(i);
-                        radioButton.setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
-                        rgp.addView(radioButton);
-                    }
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
@@ -117,7 +105,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                     });
                 }
 
-                if(elm.equals(nList.item(5))){
+                if(elm.equals(nList.item(3))){
                     finish();
                     siguienePreguntaIntent();
                 }
@@ -133,6 +121,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
 
 
     }
+
+    // Obtiene el nodo del xml pasado por parametro y devolvemos el hijo
     protected String getNodeValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag);
         Node node = nodeList.item(0);
@@ -149,6 +139,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
         return "";
     }
 
+    // Pasamos a la siguiente pregunta
     public void siguienePregunta(View v){
         if(comprovado == true){
             finish();
