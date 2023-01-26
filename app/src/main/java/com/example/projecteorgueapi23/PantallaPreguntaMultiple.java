@@ -83,10 +83,10 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
             Document doc = docBuilder.parse(input);
             NodeList nList = doc.getElementsByTagName("pregunta");
             if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
-                Element elm = (Element)nList.item(7);
+                Element elm = (Element) nList.item(GlobalVariables.cont);
                 String string = getNodeValue("id", elm);
                 //Entrara solo si es la pregunta correspondiente
-                if(string.equals("6.5")){
+                if(elm.equals(nList.item(7))){
                     String textoPregunta = getNodeValue("preg", elm);
                     pregunta.setText(textoPregunta);
                     Resources res = getResources();
@@ -118,10 +118,13 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
                         textViews[i].setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
                     }
                     // siguiente pregunta
-                    if(elm.equals(nList.item(5))){
-                        finish();
-                        siguienePreguntaIntent();
-                    }
+
+                }
+                if(elm.equals(nList.item(8))){
+                    finish();
+                    Intent intent = new Intent(this, PreguntasRespuestas.class);
+                    startActivity(intent);
+
                 }
 
             }
@@ -221,11 +224,5 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         finish();
         startActivity(getIntent());
         GlobalVariables.cont++;
-    }
-
-    public void siguienePreguntaIntent(){
-        finish();
-        Intent intent = new Intent(this, PreguntasRelacionar.class);
-        startActivity(intent);
     }
 }

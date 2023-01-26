@@ -70,7 +70,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                 }
 
                 // Se commprueba si las respuestas son correctas
-                if(elm.equals(nList.item(0))){
+                if(elm.equals(nList.item(1))){
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 2){
@@ -81,7 +81,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                         }
                     });
-                }else if(elm.equals(nList.item(1))){
+                }else if(elm.equals(nList.item(3))){
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
@@ -92,7 +92,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                         }
                     });
-                }else if(elm.equals(nList.item(2))){
+                }else if(elm.equals(nList.item(4))){
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
@@ -103,12 +103,29 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                         }
                     });
+                }else if(elm.equals(nList.item(8))){
+                    btnComprova.setOnClickListener(view -> {
+                        int id = rgp.getCheckedRadioButtonId();
+                        if(id == 1){
+                            for (int i = 0; i < rgp.getChildCount(); i++) {
+                                rgp.getChildAt(i).setEnabled(false);
+                            }
+                            botonRespuesta.setEnabled(true);
+                            comprovado = true;
+                        }
+                    });
+                }
+                if(elm.equals(nList.item(2))){
+                    finish();
+                    Intent intent = new Intent(this, PreguntaClickImagenes.class);
+                    startActivity(intent);
+                }
+                if(elm.equals(nList.item(5))){
+                    finish();
+                    Intent intent = new Intent(this, PantallarConfirmarUbicacio.class);
+                    startActivity(intent);
                 }
 
-                if(elm.equals(nList.item(3))){
-                    finish();
-                    siguienePreguntaIntent();
-                }
             }
 
         } catch (IOException e) {
@@ -142,18 +159,19 @@ public class PreguntasRespuestas extends AppCompatActivity {
     // Pasamos a la siguiente pregunta
     public void siguienePregunta(View v){
         if(comprovado == true){
-            finish();
-            startActivity(getIntent());
-            GlobalVariables.cont++;
-        }else{
+            if(GlobalVariables.cont == 8){
+                GlobalVariables.cont = 0;
+                finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }else{
+                finish();
+                startActivity(getIntent());
+                GlobalVariables.cont++;
+            }
+        }else {
 
         }
 
-    }
-
-    public void siguienePreguntaIntent() {
-        finish();
-        Intent intent = new Intent(this, PreguntasRelacionar.class);
-        startActivity(intent);
     }
 }

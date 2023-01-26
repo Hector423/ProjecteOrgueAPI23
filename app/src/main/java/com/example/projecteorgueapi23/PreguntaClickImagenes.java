@@ -3,6 +3,7 @@ package com.example.projecteorgueapi23;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -98,6 +99,17 @@ public class PreguntaClickImagenes extends AppCompatActivity {
 
                 }
                 if(elm.equals(nList.item(1))){
+                    finish();
+                    Intent intent = new Intent(this, PreguntasRespuestas.class);
+                    startActivity(intent);
+                }
+                if(elm.equals(nList.item(3))){
+                    finish();
+                    Intent intent = new Intent(this, PreguntasRespuestas.class);
+                    startActivity(intent);
+                }
+
+                if(elm.equals(nList.item(2))){
                     for(int i = 0; i < imageButtons.length; i++){
                         imageButtons[i].setImageDrawable(drawables[i]);
                     }
