@@ -25,7 +25,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class PantallarConfirmarUbicacio extends AppCompatActivity {
-
+    /*
+        Declaramos las variables
+         */
     private Button botoConfirmar;
     private ImageView imagen1, imagen2, imagen3, imagen4, imagen5, imagen6;
     private Drawable drawable1, drawable2, drawable3, drawable4, drawable5, drawable6;
@@ -39,7 +41,9 @@ public class PantallarConfirmarUbicacio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_ir_a_sitio);
 
-
+/*
+        Declaramos variables del layout con las de la clase
+         */
         imagen1 = findViewById(R.id.imageView3);
         imagen2 = findViewById(R.id.imageView4);
         imagen3 = findViewById(R.id.imageView5);
@@ -57,7 +61,9 @@ public class PantallarConfirmarUbicacio extends AppCompatActivity {
         Drawable drawable5 = ResourcesCompat.getDrawable(getResources(), R.drawable.fila_3_columna_1, null);
         Drawable drawable6 = ResourcesCompat.getDrawable(getResources(), R.drawable.fila_3_columna_2_punto, null);
 
-
+  /*
+        Empezamos a leer el xml con las preguntas
+         */
         try {
             InputStream input = getAssets().open("preguntas.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -71,6 +77,9 @@ public class PantallarConfirmarUbicacio extends AppCompatActivity {
                 Drawable[] drawables = {drawable1, drawable2, drawable3, drawable4, drawable5, drawable6};
                 ImageView[] imageViews = {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6};
 
+                /*
+                Añadimos las imagenes del plano para que sirva de mapa
+                 */
                 if(elm.equals(nList.item(0))) {
                     for(int i = 0; i < imageViews.length; i++){
                         imageViews[i].setImageDrawable(drawables[i]);
@@ -87,7 +96,9 @@ public class PantallarConfirmarUbicacio extends AppCompatActivity {
         } catch (SAXException e) {
             e.printStackTrace();
         }
-
+/*
+El boton ejecutara el metodo para ir a la siguiente pregunta
+ */
     botoConfirmar.setOnClickListener( v ->
     {
         openSeguentPantalla();

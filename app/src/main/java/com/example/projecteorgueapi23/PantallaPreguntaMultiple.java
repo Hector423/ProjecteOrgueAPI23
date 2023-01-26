@@ -29,6 +29,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class PantallaPreguntaMultiple extends AppCompatActivity {
 
+    /*
+    Declaramos las variables
+     */
     private TextView pregunta, nombreImagen1, nombreImagen2, nombreImagen3, nombreImagen4, nombreImagen5, nombreImagen6, nombreImagen7, nombreImagen8, nombreImagen9;
     private ImageButton imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9;
     private Button botoComprovar, botoContinuar;
@@ -39,6 +42,9 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta_multiple);
 
+        /*
+        Declaramos variables del layout con las de la clase
+         */
         pregunta = findViewById(R.id.textPreguntaImagenes);
         nombreImagen1 = findViewById(R.id.textView28);
         nombreImagen2 = findViewById(R.id.textView29);
@@ -66,6 +72,9 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
 
 
 
+        /*
+        Empezamos a leer el xml con las preguntas
+         */
 
         try {
             InputStream input = getAssets().open("preguntas.xml");
@@ -76,10 +85,12 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
             if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
                 Element elm = (Element)nList.item(7);
                 String string = getNodeValue("id", elm);
+                //Entrara solo si es la pregunta correspondiente
                 if(string.equals("6.5")){
                     String textoPregunta = getNodeValue("preg", elm);
                     pregunta.setText(textoPregunta);
                     Resources res = getResources();
+                    //Añadimos la imagenes
                     Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.poms_registres, null);
                     Drawable drawable2 = ResourcesCompat.getDrawable(res, R.drawable.caixa_expressiu, null);
                     Drawable drawable3 = ResourcesCompat.getDrawable(res, R.drawable.secrets, null);
@@ -100,15 +111,13 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
                     imagen8.setImageDrawable(drawable8);
                     imagen9.setImageDrawable(drawable9);
 
+                    //Añadimos los nombres de cada imagen al textView que tienen debajo
                     TextView[] textViews = {nombreImagen1, nombreImagen2, nombreImagen3,  nombreImagen4, nombreImagen5, nombreImagen6, nombreImagen7, nombreImagen8, nombreImagen9};
                     int contRadio = elm.getElementsByTagName("respuesta").getLength();
                     for(int i =0; i<contRadio; i++){
                         textViews[i].setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
                     }
-
-
-
-
+                    // siguiente pregunta
                     if(elm.equals(nList.item(5))){
                         finish();
                         siguienePreguntaIntent();
@@ -124,47 +133,67 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         } catch (SAXException e) {
             e.printStackTrace();
         }
+        /*
+        Añadimos en cada imagen el contador de + o - dependiendo de
+        si es la respuesta correcta y hacemos que solo se pueda clicar una vez
+         */
+        imagen1.setOnClickListener(v -> {
+            cont++;
+            imagen1.setEnabled(false);
+        });
+        imagen2.setOnClickListener(v -> {
+            cont--;
+            imagen2.setEnabled(false);
+        });
+        imagen3.setOnClickListener(v -> {
+            cont--;
+            imagen3.setEnabled(false);
+        });
+        imagen4.setOnClickListener(v -> {
+            cont++;
+            imagen4.setEnabled(false);
+        });
+        imagen5.setOnClickListener(v -> {
+            cont++;
+            imagen5.setEnabled(false);
+        });
+        imagen6.setOnClickListener(v -> {
+            cont--;
+            imagen6.setEnabled(false);
+        });
+        imagen7.setOnClickListener(v -> {
+            cont++;
+            imagen7.setEnabled(false);
+        });
+        imagen8.setOnClickListener(v -> {
+            cont--;
+            imagen8.setEnabled(false);
+        });
+        imagen9.setOnClickListener(v -> {
+            cont++;
+            imagen9.setEnabled(false);
+        });
 
-//        ImageButton[] imageButtons = {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9};
-//
-//        for (int i = 0; i < imageButtons.length; i++) {
-//            final ImageButton imageButton = imageButtons[i];
-//            imageButton.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    if (imageButton.isPressed()) {
-//                        imageButton.setPressed(false);
-//                    } else {
-//                        imageButton.setPressed(true);
-//                    }
-//                    return true;
-//                }
-//            });
-//        }
-
-
-//        imagen9.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                imagen9.setPressed(true);
-//                return true;
-//            }
-//        });
-
-        imagen1.setOnClickListener(v -> {cont++;});
-        imagen2.setOnClickListener(v -> {cont--;});
-        imagen3.setOnClickListener(v -> {cont--;});
-        imagen4.setOnClickListener(v -> {cont++;});
-        imagen5.setOnClickListener(v -> {cont++;});
-        imagen6.setOnClickListener(v -> {cont--;});
-        imagen7.setOnClickListener(v -> {cont++;});
-        imagen8.setOnClickListener(v -> {cont--;});
-        imagen9.setOnClickListener(v -> {cont++;});
-
+        /*
+        Al pulsar el boton de comprobar, si se han introducido las respuestas correctas
+        se habilita el boton de continuar, sino si resetea el contador global y se habilitan
+        los botones otra vez
+         */
         botoComprovar.setOnClickListener(v -> {
             if(cont == 5){
                 botoContinuar.setClickable(true);
                 botoContinuar.setEnabled(true);
+            }else{
+                cont = 0;
+                imagen1.setEnabled(true);
+                imagen2.setEnabled(true);
+                imagen3.setEnabled(true);
+                imagen4.setEnabled(true);
+                imagen5.setEnabled(true);
+                imagen6.setEnabled(true);
+                imagen7.setEnabled(true);
+                imagen8.setEnabled(true);
+                imagen9.setEnabled(true);
             }
         });
 

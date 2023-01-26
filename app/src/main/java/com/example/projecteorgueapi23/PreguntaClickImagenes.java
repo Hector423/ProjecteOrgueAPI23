@@ -26,7 +26,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class PreguntaClickImagenes extends AppCompatActivity {
-
+    /*
+           Declaramos las variables
+            */
     private TextView pregunta;
     private ImageButton imagen1, imagen2, imagen3, imagen4, imagen5, imagen6;
     private ImageView imagenPregunta;
@@ -38,7 +40,9 @@ public class PreguntaClickImagenes extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta_imatges);
-
+/*
+        Declaramos variables del layout con las de la clase
+         */
         imagen1 = findViewById(R.id.imageButton10);
         imagen2 = findViewById(R.id.imageButton11);
         imagen3 = findViewById(R.id.imageButton12);
@@ -59,7 +63,9 @@ public class PreguntaClickImagenes extends AppCompatActivity {
         Drawable drawable5 = ResourcesCompat.getDrawable(getResources(), R.drawable.fila_3_columna_1, null);
         Drawable drawable6 = ResourcesCompat.getDrawable(getResources(), R.drawable.fila_3_columna_2, null);
 
-
+ /*
+        Empezamos a leer el xml con las preguntas
+         */
         try {
             InputStream input = getAssets().open("preguntas.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -74,6 +80,11 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                 Drawable[] drawables = {drawable1, drawable2, drawable3, drawable4, drawable5, drawable6};
                 ImageButton[] imageButtons = {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6};
 
+                /*
+                Comprobamos si es la pregunta correspondiente y añadimos las imagenes del plano,
+                también indicamos que boton es el correcto
+
+                 */
                 if(elm.equals(nList.item(0))) {
                     for(int i = 0; i < imageButtons.length; i++){
                         imageButtons[i].setImageDrawable(drawables[i]);
@@ -97,6 +108,10 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                         correcto = true;
                     });
                 }
+
+                /*
+                Se comprueba que se ha seleccionado el boton correcto y se habilita el boton de continuar
+                 */
                 botoComprovar.setOnClickListener(v -> {
                     if(correcto){
                         botoContinuar.setClickable(true);

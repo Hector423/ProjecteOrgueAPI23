@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openPreguntes(){
-        Intent intent = new Intent(this, PreguntaClickImagenes.class);
+        Intent intent = new Intent(this, PantallaPreguntaMultiple.class);
         startActivity(intent);
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preguntas>
-
     <pregunta>
         <id>1.2</id>
         <preg>Busqueu aquest carreu i situeu-lo al plànol</preg>
@@ -13,6 +12,14 @@
         <respuesta></respuesta>
     </pregunta>
     <pregunta>
+        <id>2.2</id>
+        <preg>Quants escuts de la ciutat has pogut comptabilitzar al llarg de la visita?</preg>
+        <icon></icon>
+        <respuesta>entre 10 i 20</respuesta>
+        <respuesta>entre 21 i 40</respuesta>
+        <respuesta>més de 40</respuesta>
+    </pregunta>
+    <pregunta>
         <id>3.2</id>
         <preg>Segons la imatge, on creieu que estava situat l'orgue anterior? Situeu-lo al plànol</preg>
         <icon></icon>
@@ -23,23 +30,6 @@
         <respuesta></respuesta>
         <respuesta></respuesta>
     </pregunta>
-    <pregunta>
-        <id>5.2</id>
-        <preg>Aneu a la ubicació que mostra el plànol i obriu la nova
-            informació.</preg>
-        <icon></icon>
-        <respuesta></respuesta>
-        <respuesta></respuesta>
-    </pregunta>
-    <pregunta>
-        <id>2.2</id>
-        <preg>Quants escuts de la ciutat has pogut comptabilitzar al llarg de la visita?</preg>
-        <icon></icon>
-        <respuesta>entre 10 i 20</respuesta>
-        <respuesta>entre 21 i 40</respuesta>
-        <respuesta>més de 40</respuesta>
-    </pregunta>
-
     <pregunta>
         <id>3.6</id>
         <preg>Observeu bé la imatge i responeu</preg>
@@ -55,7 +45,14 @@
         <respuesta>els castells i el campanar</respuesta>
         <respuesta>el campanar i els gegants</respuesta>
     </pregunta>
-
+    <pregunta>
+        <id>5.2</id>
+        <preg>Aneu a la ubicació que mostra el plànol i obriu la nova
+            informació.</preg>
+        <icon></icon>
+        <respuesta></respuesta>
+        <respuesta></respuesta>
+    </pregunta>
     <pregunta>
         <id>5.4</id>
         <preg>Llegiu i relacioneu cada tipus d’orgue amb la definició que
