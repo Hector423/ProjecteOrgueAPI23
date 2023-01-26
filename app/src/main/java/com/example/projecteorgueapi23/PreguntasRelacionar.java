@@ -35,6 +35,7 @@ public class PreguntasRelacionar extends AppCompatActivity {
     private boolean comprovado = false;
     private int contador = 0, f1 = 0, f2 = 0, f3 = 0, f4 = 0;
     private ArrayAdapter<CharSequence> adaptador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,34 +68,38 @@ public class PreguntasRelacionar extends AppCompatActivity {
             DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(input);
             NodeList nList = doc.getElementsByTagName("pregunta");
-            if(nList.item(0).getNodeType() == Node.ELEMENT_NODE){
-                // Insertamos en los campos el texto leido del xml
-                Element elm = (Element)nList.item(GlobalVariables.cont);
-                String pregunta = getNodeValue("preg", elm);
-                titulo.setText(pregunta);
-                t1.setText(elm.getElementsByTagName("respuestaA1").item(0).getTextContent());
-                t2.setText(elm.getElementsByTagName("respuestaB1").item(0).getTextContent());
-                t3.setText(elm.getElementsByTagName("respuestaC1").item(0).getTextContent());
-                t4.setText(elm.getElementsByTagName("respuestaD1").item(0).getTextContent());
+            if (nList.item(0).getNodeType() == Node.ELEMENT_NODE) {
+                Element elm = (Element) nList.item(GlobalVariables.cont);
+                if(elm.equals(nList.item(6))) {
+                    // Insertamos en los campos el texto leido del xml
+                    String pregunta = getNodeValue("preg", elm);
+                    titulo.setText(pregunta);
+                    t1.setText(elm.getElementsByTagName("respuestaA1").item(0).getTextContent());
+                    t2.setText(elm.getElementsByTagName("respuestaB1").item(0).getTextContent());
+                    t3.setText(elm.getElementsByTagName("respuestaC1").item(0).getTextContent());
+                    t4.setText(elm.getElementsByTagName("respuestaD1").item(0).getTextContent());
 
 
-                // Comprueba si las respuestas son las correctas
-                btnComprova.setOnClickListener(view -> {
-                    if(sp1.getSelectedItem().equals("es porta a sobre mentre el toca") && sp2.getSelectedItem().equals("es pot posar a diferents llocs")
-                            && sp3.getSelectedItem().equals("té només un teclat però ja té dimensions considerables") && sp4.getSelectedItem().equals("té milers de tubs i necessita un espai gran per a posar-lo")){
-                        sp1.setEnabled(false);
-                        sp2.setEnabled(false);
-                        sp3.setEnabled(false);
-                        sp4.setEnabled(false);
-                        botonRespuesta.setEnabled(true);
-                        comprovado = true;
-                    }
-                });
-
-                if(elm.equals(nList.item(5))){
-                    finish();
-                    siguienePreguntaIntent();
+                    // Comprueba si las respuestas son las correctas
+                    btnComprova.setOnClickListener(view -> {
+                        if (sp1.getSelectedItem().equals("es porta a sobre mentre el toca") && sp2.getSelectedItem().equals("es pot posar a diferents llocs")
+                                && sp3.getSelectedItem().equals("té només un teclat però ja té dimensions considerables") && sp4.getSelectedItem().equals("té milers de tubs i necessita un espai gran per a posar-lo")) {
+                            sp1.setEnabled(false);
+                            sp2.setEnabled(false);
+                            sp3.setEnabled(false);
+                            sp4.setEnabled(false);
+                            botonRespuesta.setEnabled(true);
+                            comprovado = true;
+                        }
+                    });
                 }
+
+                if (elm.equals(nList.item(7))) {
+                    finish();
+                    Intent intent = new Intent(this, PantallaPreguntaMultiple.class);
+                    startActivity(intent);
+                }
+
             }
 
         } catch (IOException e) {
@@ -112,12 +117,12 @@ public class PreguntasRelacionar extends AppCompatActivity {
     protected String getNodeValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag);
         Node node = nodeList.item(0);
-        if(node!=null){
-            if(node.hasChildNodes()){
+        if (node != null) {
+            if (node.hasChildNodes()) {
                 Node child = node.getFirstChild();
-                while (child!=null){
-                    if(child.getNodeType() == Node.TEXT_NODE){
-                        return  child.getNodeValue();
+                while (child != null) {
+                    if (child.getNodeType() == Node.TEXT_NODE) {
+                        return child.getNodeValue();
                     }
                 }
             }
@@ -126,15 +131,9 @@ public class PreguntasRelacionar extends AppCompatActivity {
     }
 
     // Pasamos a la siguiente pregunta
-    public void siguienePregunta(View v){
+    public void siguienePregunta(View v) {
         finish();
         startActivity(getIntent());
         GlobalVariables.cont++;
-    }
-
-    public void siguienePreguntaIntent(){
-        finish();
-        Intent intent = new Intent(this, PreguntasRelacionar.class);
-        startActivity(intent);
     }
 }

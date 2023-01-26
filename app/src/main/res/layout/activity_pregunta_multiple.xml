@@ -223,6 +223,7 @@
         android:layout_height="wrap_content"
         android:clickable="false"
         android:enabled="false"
+        android:onClick="siguienePregunta"
         android:text="Continuar"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

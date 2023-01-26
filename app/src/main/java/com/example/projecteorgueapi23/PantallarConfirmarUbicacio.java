@@ -80,7 +80,7 @@ public class PantallarConfirmarUbicacio extends AppCompatActivity {
                 /*
                 Añadimos las imagenes del plano para que sirva de mapa
                  */
-                if(elm.equals(nList.item(0))) {
+                if(elm.equals(nList.item(5))) {
                     for(int i = 0; i < imageViews.length; i++){
                         imageViews[i].setImageDrawable(drawables[i]);
                     }
@@ -125,7 +125,8 @@ El boton ejecutara el metodo para ir a la siguiente pregunta
         return "";
     }
     public void openSeguentPantalla(){
-        Intent intent = new Intent(this, PantallaInici.class);
+        GlobalVariables.cont++;
+        Intent intent = new Intent(this, PreguntasRelacionar.class);
         startActivity(intent);
     }
 
