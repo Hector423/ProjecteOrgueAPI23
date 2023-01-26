@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Document;
@@ -31,6 +32,7 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
     private TextView pregunta, nombreImagen1, nombreImagen2, nombreImagen3, nombreImagen4, nombreImagen5, nombreImagen6, nombreImagen7, nombreImagen8, nombreImagen9;
     private ImageButton imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9;
     private Button botoComprovar, botoContinuar;
+    private int cont = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,14 +81,14 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
                     pregunta.setText(textoPregunta);
                     Resources res = getResources();
                     Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.poms_registres, null);
-                    Drawable drawable2 = ResourcesCompat.getDrawable(res, R.drawable.tubs, null);
-                    Drawable drawable3 = ResourcesCompat.getDrawable(res, R.drawable.manuals, null);
+                    Drawable drawable2 = ResourcesCompat.getDrawable(res, R.drawable.caixa_expressiu, null);
+                    Drawable drawable3 = ResourcesCompat.getDrawable(res, R.drawable.secrets, null);
                     Drawable drawable4 = ResourcesCompat.getDrawable(res, R.drawable.pedaler, null);
                     Drawable drawable5 = ResourcesCompat.getDrawable(res, R.drawable.pedal_expressio, null);
                     Drawable drawable6 = ResourcesCompat.getDrawable(res, R.drawable.barnilles, null);
-                    Drawable drawable7 = ResourcesCompat.getDrawable(res, R.drawable.caixa_expressiu, null);
+                    Drawable drawable7 = ResourcesCompat.getDrawable(res, R.drawable.tubs , null);
                     Drawable drawable8 = ResourcesCompat.getDrawable(res, R.drawable.manxa_orgue01, null);
-                    Drawable drawable9 = ResourcesCompat.getDrawable(res, R.drawable.secrets, null);
+                    Drawable drawable9 = ResourcesCompat.getDrawable(res, R.drawable.manuals, null);
 
                     imagen1.setImageDrawable(drawable);
                     imagen2.setImageDrawable(drawable2);
@@ -97,6 +99,13 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
                     imagen7.setImageDrawable(drawable7);
                     imagen8.setImageDrawable(drawable8);
                     imagen9.setImageDrawable(drawable9);
+
+                    TextView[] textViews = {nombreImagen1, nombreImagen2, nombreImagen3,  nombreImagen4, nombreImagen5, nombreImagen6, nombreImagen7, nombreImagen8, nombreImagen9};
+                    int contRadio = elm.getElementsByTagName("respuesta").getLength();
+                    for(int i =0; i<contRadio; i++){
+                        textViews[i].setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
+                    }
+
 
 
 
@@ -116,15 +125,52 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
             e.printStackTrace();
         }
 
-       // imagen1.setOnTouchListener(OnTouch() );
+//        ImageButton[] imageButtons = {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9};
+//
+//        for (int i = 0; i < imageButtons.length; i++) {
+//            final ImageButton imageButton = imageButtons[i];
+//            imageButton.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    if (imageButton.isPressed()) {
+//                        imageButton.setPressed(false);
+//                    } else {
+//                        imageButton.setPressed(true);
+//                    }
+//                    return true;
+//                }
+//            });
+//        }
 
 
-    }
+//        imagen9.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                imagen9.setPressed(true);
+//                return true;
+//            }
+//        });
 
-    private boolean OnTouch() {
-        imagen1.setPressed(true);
-        return true;
-    }
+        imagen1.setOnClickListener(v -> {cont++;});
+        imagen2.setOnClickListener(v -> {cont--;});
+        imagen3.setOnClickListener(v -> {cont--;});
+        imagen4.setOnClickListener(v -> {cont++;});
+        imagen5.setOnClickListener(v -> {cont++;});
+        imagen6.setOnClickListener(v -> {cont--;});
+        imagen7.setOnClickListener(v -> {cont++;});
+        imagen8.setOnClickListener(v -> {cont--;});
+        imagen9.setOnClickListener(v -> {cont++;});
+
+        botoComprovar.setOnClickListener(v -> {
+            if(cont == 5){
+                botoContinuar.setClickable(true);
+                botoContinuar.setEnabled(true);
+            }
+        });
+
+
+        }
+
 
     protected String getNodeValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag);
