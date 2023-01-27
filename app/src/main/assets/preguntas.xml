@@ -47,16 +47,14 @@
     </pregunta>
     <pregunta>
         <id>5.2</id>
-        <preg>Aneu a la ubicació que mostra el plànol i obriu la nova
-            informació.</preg>
+        <preg>Aneu a la ubicació que mostra el plànol i obriu la nova informació.</preg>
         <icon></icon>
         <respuesta></respuesta>
         <respuesta></respuesta>
     </pregunta>
     <pregunta>
         <id>5.4</id>
-        <preg>Llegiu i relacioneu cada tipus d’orgue amb la definició que
-            creieu que li correspon.</preg>
+        <preg>Llegiu i relacioneu cada tipus d’orgue amb la definició que creieu que li correspon.</preg>
         <icon></icon>
         <respuestaA1>orgue portatiu</respuestaA1>
         <respuestaA2>es porta a sobre mentre el toca</respuestaA2>
@@ -69,8 +67,7 @@
     </pregunta>
     <pregunta>
         <id>6.5</id>
-        <preg>Mireu bé la façana de l’orgue i trieu de totes aquestes
-            parts les que són visibles.</preg>
+        <preg>Mireu bé la façana de l’orgue i trieu de totes aquestes parts les que són visibles.</preg>
         <icon></icon>
         <respuesta>poms dels registres</respuesta>
         <respuesta>caixa de l'expressiu</respuesta>

@@ -1,9 +1,11 @@
 package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,22 +68,28 @@ public class PreguntasRespuestas extends AppCompatActivity {
                     radioButton = new RadioButton(this);
                     radioButton.setId(i);
                     radioButton.setText(elm.getElementsByTagName("respuesta").item(i).getTextContent());
+                    radioButton.setTextSize(20);
                     rgp.addView(radioButton);
                 }
 
                 // Se commprueba si las respuestas son correctas
                 if(elm.equals(nList.item(1))){
+                    Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.escut, null);
+                    imagen.setImageDrawable(drawable);
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 2){
                             for (int i = 0; i < rgp.getChildCount(); i++) {
                                 rgp.getChildAt(i).setEnabled(false);
                             }
+
                             botonRespuesta.setEnabled(true);
                             comprovado = true;
                         }
                     });
                 }else if(elm.equals(nList.item(3))){
+                    Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.orgue_antic07, null);
+                    imagen.setImageDrawable(drawable);
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
@@ -93,6 +101,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
                         }
                     });
                 }else if(elm.equals(nList.item(4))){
+                    Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.nou_orgue, null);
+                    imagen.setImageDrawable(drawable);
                     btnComprova.setOnClickListener(view -> {
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){

@@ -1,10 +1,12 @@
 package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 
 import android.content.Intent;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -30,7 +32,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class PreguntasRelacionar extends AppCompatActivity {
     private TextView titulo, t1, t2, t3, t4;
     private Button botonRespuesta, btnComprova;
-    private ImageView imagen;
+    private ImageView imagen1, imagen2, imagen3, imagen4;
     private Spinner sp1, sp2, sp3, sp4;
     private boolean comprovado = false;
     private int contador = 0, f1 = 0, f2 = 0, f3 = 0, f4 = 0;
@@ -50,6 +52,12 @@ public class PreguntasRelacionar extends AppCompatActivity {
         sp2 = findViewById(R.id.spinner2);
         sp3 = findViewById(R.id.spinner3);
         sp4 = findViewById(R.id.spinner4);
+
+        imagen1 = findViewById(R.id.imageView9);
+        imagen2 = findViewById(R.id.imageView10);
+        imagen3 = findViewById(R.id.imageView11);
+        imagen4 = findViewById(R.id.imageView12);
+
 
         adaptador = ArrayAdapter.createFromResource(this, R.array.respuestasArray, android.R.layout.simple_spinner_item);
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -79,7 +87,15 @@ public class PreguntasRelacionar extends AppCompatActivity {
                     t3.setText(elm.getElementsByTagName("respuestaC1").item(0).getTextContent());
                     t4.setText(elm.getElementsByTagName("respuestaD1").item(0).getTextContent());
 
+                    Drawable drawable1 = ResourcesCompat.getDrawable(getResources(), R.drawable.orgue_portatiu, null);
+                    Drawable drawable2 = ResourcesCompat.getDrawable(getResources(), R.drawable.orgue_positiu, null);
+                    Drawable drawable3 = ResourcesCompat.getDrawable(getResources(), R.drawable.orgue_principal, null);
+                    Drawable drawable4 = ResourcesCompat.getDrawable(getResources(), R.drawable.gran_orgue, null);
 
+                    imagen1.setImageDrawable(drawable1);
+                    imagen2.setImageDrawable(drawable2);
+                    imagen3.setImageDrawable(drawable3);
+                    imagen4.setImageDrawable(drawable4);
                     // Comprueba si las respuestas son las correctas
                     btnComprova.setOnClickListener(view -> {
                         if (sp1.getSelectedItem().equals("es porta a sobre mentre el toca") && sp2.getSelectedItem().equals("es pot posar a diferents llocs")
