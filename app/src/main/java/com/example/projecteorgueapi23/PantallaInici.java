@@ -21,10 +21,20 @@ public class PantallaInici extends AppCompatActivity {
         {
             openPantallaInformació();
         });
+
+        botoIniciarPreguntes.setOnClickListener(v ->
+        {
+            openPreguntes();
+        });
     }
 
     public void openPantallaInformació(){
         Intent intent = new Intent(this, PantallaInfo.class);
+        startActivity(intent);
+    }
+
+    public void openPreguntes(){
+        Intent intent = new Intent(this, PreguntaClickImagenes.class);
         startActivity(intent);
     }
 

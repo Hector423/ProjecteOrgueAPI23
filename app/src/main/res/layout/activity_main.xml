@@ -11,7 +11,7 @@
         android:id="@+id/botoInici"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Començar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,16 +19,14 @@
         app:layout_constraintVertical_bias="0.576" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="1013dp"
-        android:layout_height="1402dp"
-        android:onClick="openPreguntes"
-        android:tooltipText="HOLA"
+        android:id="@+id/imageView13"
+        android:layout_width="1198dp"
+        android:layout_height="1603dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494"
-        app:srcCompat="@drawable/granorgue"
-        tools:layout_editor_absoluteX="-51dp" />
+        app:srcCompat="@drawable/granorgue" />
 
     <EditText
         android:id="@+id/AfegirNom"
