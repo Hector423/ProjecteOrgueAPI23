@@ -34,7 +34,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button iniciarPreguntes;
+    private Button iniciarPreguntes, preferencies;
     private View nom;
     private ImageButton imageButton;
     private Uri uriImage;
@@ -48,11 +48,19 @@ public class MainActivity extends AppCompatActivity {
 
         nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
+        preferencies = findViewById(R.id.preferencies);
 
         iniciarPreguntes.setOnClickListener(v ->
                 {
                          openPreguntes();
                 });
+
+        preferencies.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Preferencies.class);
+            startActivity(intent);
+        });
+
+
     }
 
     public void openPreguntes(){
