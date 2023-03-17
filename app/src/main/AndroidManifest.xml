@@ -73,6 +73,9 @@
         <activity
             android:name=".PantallaInici"
             android:exported="true" />
+        <activity
+            android:name=".Preferencies"
+            android:exported="true" />
     </application>
 
 </manifest>
