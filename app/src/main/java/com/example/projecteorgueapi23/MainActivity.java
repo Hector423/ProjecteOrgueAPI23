@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private Uri uriImage;
     private ImageView imageView;
+    private Musica musica = new Musica();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openPreguntes(){
+        musica.soundButton(MainActivity.this);
         Intent intent = new Intent(this, PantallaInici.class);
         startActivity(intent);
     }
