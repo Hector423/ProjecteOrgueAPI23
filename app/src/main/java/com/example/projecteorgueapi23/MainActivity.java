@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         iniciarPreguntes = findViewById(R.id.botoInici);
         preferencies = findViewById(R.id.preferencies);
 
+        preferenciasMusica();
+
         iniciarPreguntes.setOnClickListener(v ->
                 {
                          openPreguntes();
@@ -63,9 +68,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferenciasMusica();
+    }
+
     public void openPreguntes(){
-        musica.soundButton(MainActivity.this);
+        Log.i("Booleano", "" + musica.isUnMutedGeneral());
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(MainActivity.this);
+        }
         Intent intent = new Intent(this, PantallaInici.class);
         startActivity(intent);
+    }
+
+    public void preferenciasMusica(){
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        boolean prefMusica = pref.getBoolean("musica", true);
+
+        Log.i("Booleano", "" + prefMusica);
+
+        musica.setuNMutedGeneral(prefMusica);
     }
 }

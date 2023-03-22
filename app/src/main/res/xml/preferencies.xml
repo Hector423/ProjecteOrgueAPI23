@@ -2,6 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
         android:key="musica"
-        android:title="Reproduir música"
-        android:summary="Es reprodueix música de fons"/>
+        android:title="Reproducir musica"
+        android:summary="Se reproduce musica"/>
 </PreferenceScreen>

@@ -15,7 +15,8 @@ public class Musica {
     private static final int cancion = R.raw.fondo;
     private static MediaPlayer mp = null, mpBoton = null;
     private static int audioIndex = 0;
-    private static boolean muted = false;
+    private static boolean muted = true;
+    private static boolean unMutedGeneral = true;
 
     // SoundPool variables
     private static SoundPool sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
@@ -77,12 +78,30 @@ public class Musica {
         Musica.muted = muted;
     }
 
+    public static boolean isUnMutedGeneral() {
+        return unMutedGeneral;
+    }
+
+    public static void setuNMutedGeneral(boolean muted) {
+        Musica.unMutedGeneral = muted;
+    }
+
     public static void soundButton(Context context) {
         soundId = sp.load(context, R.raw.boton, 1);
         sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
                 sp.play(soundId, 1, 1, 0, 0, 1);
+            }
+        });
+    }
+
+    public static void stopButton(Context context) {
+        soundId = sp.load(context, R.raw.boton, 1);
+        sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            @Override
+            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                sp.stop(1);
             }
         });
     }
