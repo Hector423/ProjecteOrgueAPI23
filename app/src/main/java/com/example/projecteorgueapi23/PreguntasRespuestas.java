@@ -85,6 +85,10 @@ public class PreguntasRespuestas extends AppCompatActivity {
 
                             botonRespuesta.setEnabled(true);
                             comprovado = true;
+                            GlobalVariables.puntuacion++;
+                        }else{
+                            GlobalVariables.puntuacion--;
+                            GlobalVariables.fallos++;
                         }
                     });
                 }else if(elm.equals(nList.item(3))){
@@ -98,6 +102,10 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             }
                             botonRespuesta.setEnabled(true);
                             comprovado = true;
+                            GlobalVariables.puntuacion++;
+                        }else{
+                            GlobalVariables.puntuacion--;
+                            GlobalVariables.fallos++;
                         }
                     });
                 }else if(elm.equals(nList.item(4))){
@@ -111,6 +119,10 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             }
                             botonRespuesta.setEnabled(true);
                             comprovado = true;
+                            GlobalVariables.puntuacion++;
+                        }else{
+                            GlobalVariables.puntuacion--;
+                            GlobalVariables.fallos++;
                         }
                     });
                 }else if(elm.equals(nList.item(8))){
@@ -122,6 +134,10 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             }
                             botonRespuesta.setEnabled(true);
                             comprovado = true;
+                            GlobalVariables.puntuacion++;
+                        }else{
+                            GlobalVariables.puntuacion--;
+                            GlobalVariables.fallos++;
                         }
                     });
                 }
@@ -172,7 +188,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
             if(GlobalVariables.cont == 8){
                 GlobalVariables.cont = 0;
                 finish();
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, PantallaFinal.class);
                 startActivity(intent);
             }else{
                 finish();

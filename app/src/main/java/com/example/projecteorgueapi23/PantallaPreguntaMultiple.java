@@ -186,6 +186,7 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
             if(cont == 5){
                 botoContinuar.setClickable(true);
                 botoContinuar.setEnabled(true);
+                GlobalVariables.puntuacion++;
             }else{
                 cont = 0;
                 imagen1.setEnabled(true);
@@ -197,6 +198,8 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
                 imagen7.setEnabled(true);
                 imagen8.setEnabled(true);
                 imagen9.setEnabled(true);
+                GlobalVariables.fallos--;
+                GlobalVariables.puntuacion--;
             }
         });
 
