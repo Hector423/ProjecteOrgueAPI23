@@ -1,8 +1,12 @@
 package com.example.projecteorgueapi23;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
 
 
 public class Preferencies extends PreferenceActivity
@@ -17,7 +21,16 @@ public class Preferencies extends PreferenceActivity
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                //code for what you want it to do
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                boolean prefMusica = pref.getBoolean("musica", true);
+                Log.i("Booleano", "" + prefMusica);
+                musica.setuNMutedGeneral(prefMusica);
+                if(musica.isUnMutedGeneral()) {
+                    musica.resumeAudio();
+                }else{
+                    musica.pausaAudio();
+                }
+                finish();
                 return true;
             }
         });

@@ -52,8 +52,15 @@ public class MainActivity extends AppCompatActivity {
         nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
         preferencies = findViewById(R.id.preferencies);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putBoolean("musica", prefs.getBoolean("musica", true)).commit();
         if(musica.isUnMutedGeneral()) {
-            musica.playAudio(MainActivity.this);
+            if (!musica.isFirstReproduced()) {
+                musica.playAudio(MainActivity.this);
+                musica.setFirstReproduced(true);
+            } else {
+                musica.resumeAudio();
+            }
         }else{
             musica.pausaAudio();
         }
@@ -97,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
         boolean prefMusica = pref.getBoolean("musica", true);
-
-//        Log.i("Booleano", "" + prefMusica);
 
         musica.setuNMutedGeneral(prefMusica);
     }

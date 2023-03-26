@@ -13,9 +13,11 @@ import java.util.Random;
 public class Musica {
     // MediaPlayer variables
     private static MediaPlayer mp = null;
-    private static final int maxVolumen = 60;
+    private static final float maxVolumen = 0.30f;
     private static boolean muted = true;
     private static boolean unMutedGeneral = true;
+
+    private static boolean firstReproduced = false;
 
     // SoundPool variables
     private static SoundPool sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
@@ -28,10 +30,10 @@ public class Musica {
 
     public static void playAudio(Context context) {
         mp.reset();
-        mp.setVolume(maxVolumen,maxVolumen);
         mp = MediaPlayer.create(context, R.raw.fondo);
         mp.setLooping(true);
         mp.start();
+        mp.setVolume(maxVolumen,maxVolumen);
     }
 
     public static void pausaAudio() {
@@ -43,6 +45,8 @@ public class Musica {
     public static void resumeAudio() {
         if (mp != null && !mp.isPlaying()) {
             mp.start();
+            mp.setLooping(true);
+            mp.setVolume(maxVolumen,maxVolumen);
         }
     }
 
@@ -54,6 +58,10 @@ public class Musica {
         Musica.unMutedGeneral = muted;
     }
 
+    public static boolean isFirstReproduced() { return firstReproduced; }
+
+    public static void setFirstReproduced(boolean firstReproduced) { Musica.firstReproduced = firstReproduced; }
+
     public static void soundButton(Context context) {
         soundId = sp.load(context, R.raw.boton, 1);
         sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
@@ -63,5 +71,4 @@ public class Musica {
             }
         });
     }
-
 }

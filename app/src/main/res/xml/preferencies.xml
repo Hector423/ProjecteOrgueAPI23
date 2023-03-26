@@ -6,7 +6,6 @@
         android:summary="Se reproduce musica"/>
 
     <Preference
-        android:title="Guardar"
-        android:key="botonSave"
-        />
+        android:title="Guardar i Sortir"
+        android:key="botonSave"/>
 </PreferenceScreen>

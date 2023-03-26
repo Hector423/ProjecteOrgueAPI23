@@ -9,6 +9,7 @@ import android.widget.Button;
 public class PantallaInfo extends AppCompatActivity {
 
     private Button botoTornar;
+    private Musica musica = new Musica();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,9 @@ public class PantallaInfo extends AppCompatActivity {
 
 
     public void openPantallaInici(){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PantallaInfo.this);
+        }
         Intent intent = new Intent(this, PantallaInici.class);
         startActivity(intent);
     }
