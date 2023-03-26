@@ -33,6 +33,8 @@ public class PantallarConfirmarUbicacio extends AppCompatActivity {
     private Drawable drawable1, drawable2, drawable3, drawable4, drawable5, drawable6;
     private TextView pregunta;
 
+    private Musica musica = new Musica();
+
     /*
         Hacer que cuente como pregunta al continuar
      */
@@ -125,6 +127,9 @@ El boton ejecutara el metodo para ir a la siguiente pregunta
         return "";
     }
     public void openSeguentPantalla(){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PantallarConfirmarUbicacio.this);
+        }
         GlobalVariables.cont++;
         Intent intent = new Intent(this, PreguntasRelacionar.class);
         startActivity(intent);

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
     private RadioButton radioButton;
     private int contRadio = 0;
     private boolean comprovado = false;
+
+    private Musica musica = new Musica();
 
     @SuppressLint("ResourceType")
     @Override
@@ -78,6 +81,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                     Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.escut, null);
                     imagen.setImageDrawable(drawable);
                     btnComprova.setOnClickListener(view -> {
+                        musicaBoton(this);
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 2){
                             for (int i = 0; i < rgp.getChildCount(); i++) {
@@ -98,6 +102,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                     Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.orgue_antic07, null);
                     imagen.setImageDrawable(drawable);
                     btnComprova.setOnClickListener(view -> {
+                        musicaBoton(this);
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
                             for (int i = 0; i < rgp.getChildCount(); i++) {
@@ -117,6 +122,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                     Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.nou_orgue, null);
                     imagen.setImageDrawable(drawable);
                     btnComprova.setOnClickListener(view -> {
+                        musicaBoton(this);
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
                             for (int i = 0; i < rgp.getChildCount(); i++) {
@@ -134,6 +140,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
                     });
                 }else if(elm.equals(nList.item(8))){
                     btnComprova.setOnClickListener(view -> {
+                        musicaBoton(this);
                         int id = rgp.getCheckedRadioButtonId();
                         if(id == 1){
                             for (int i = 0; i < rgp.getChildCount(); i++) {
@@ -193,6 +200,7 @@ public class PreguntasRespuestas extends AppCompatActivity {
 
     // Pasamos a la siguiente pregunta
     public void siguienePregunta(View v){
+        musicaBoton(this);
         if(comprovado == true){
             if(GlobalVariables.cont == 8){
                 GlobalVariables.cont = 0;
@@ -208,5 +216,11 @@ public class PreguntasRespuestas extends AppCompatActivity {
 
         }
 
+    }
+
+    public void musicaBoton(Context context){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(context);
+        }
     }
 }
