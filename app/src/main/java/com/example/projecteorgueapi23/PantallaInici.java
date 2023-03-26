@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PantallaInici extends AppCompatActivity {
 
     private Button botoInfo, botoIniciarPreguntes;
+    private Musica musica = new Musica();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,17 @@ public class PantallaInici extends AppCompatActivity {
     }
 
     public void openPantallaInformació(){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PantallaInici.this);
+        }
         Intent intent = new Intent(this, PantallaInfo.class);
         startActivity(intent);
     }
 
     public void openPreguntes(){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PantallaInici.this);
+        }
         Intent intent = new Intent(this, PreguntaClickImagenes.class);
         startActivity(intent);
     }

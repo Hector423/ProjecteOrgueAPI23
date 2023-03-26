@@ -38,6 +38,8 @@ public class PreguntasRelacionar extends AppCompatActivity {
     private int contador = 0, f1 = 0, f2 = 0, f3 = 0, f4 = 0;
     private ArrayAdapter<CharSequence> adaptador;
 
+    private Musica musica = new Musica();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +100,9 @@ public class PreguntasRelacionar extends AppCompatActivity {
                     imagen4.setImageDrawable(drawable4);
                     // Comprueba si las respuestas son las correctas
                     btnComprova.setOnClickListener(view -> {
+                        if(musica.isUnMutedGeneral()) {
+                            musica.soundButton(PreguntasRelacionar.this);
+                        }
                         if (sp1.getSelectedItem().equals("es porta a sobre mentre el toca") && sp2.getSelectedItem().equals("es pot posar a diferents llocs")
                                 && sp3.getSelectedItem().equals("té només un teclat però ja té dimensions considerables") && sp4.getSelectedItem().equals("té milers de tubs i necessita un espai gran per a posar-lo")) {
                             sp1.setEnabled(false);
@@ -152,6 +157,9 @@ public class PreguntasRelacionar extends AppCompatActivity {
 
     // Pasamos a la siguiente pregunta
     public void siguienePregunta(View v) {
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PreguntasRelacionar.this);
+        }
         finish();
         startActivity(getIntent());
         GlobalVariables.cont++;

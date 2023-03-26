@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -49,6 +52,20 @@ public class MainActivity extends AppCompatActivity {
         nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
         preferencies = findViewById(R.id.preferencies);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putBoolean("musica", prefs.getBoolean("musica", true)).commit();
+        if(musica.isUnMutedGeneral()) {
+            if (!musica.isFirstReproduced()) {
+                musica.playAudio(MainActivity.this);
+                musica.setFirstReproduced(true);
+            } else {
+                musica.resumeAudio();
+            }
+        }else{
+            musica.pausaAudio();
+        }
+
+        preferenciasMusica();
 
         iniciarPreguntes.setOnClickListener(v ->
                 {
@@ -63,9 +80,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferenciasMusica();
+        if(musica.isUnMutedGeneral()) {
+            musica.resumeAudio();
+        }else{
+            musica.pausaAudio();
+        }
+    }
+
     public void openPreguntes(){
-        musica.soundButton(MainActivity.this);
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(MainActivity.this);
+        }
         Intent intent = new Intent(this, PantallaInici.class);
         startActivity(intent);
+    }
+
+    public void preferenciasMusica(){
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        boolean prefMusica = pref.getBoolean("musica", true);
+
+        musica.setuNMutedGeneral(prefMusica);
     }
 }

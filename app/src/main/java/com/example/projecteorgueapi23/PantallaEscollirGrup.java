@@ -11,6 +11,7 @@ public class PantallaEscollirGrup extends AppCompatActivity {
 
 
     private Button botoA, botoB, botoC, botoD;
+    private Musica musica = new Musica();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -40,6 +41,9 @@ public class PantallaEscollirGrup extends AppCompatActivity {
         }
 
     public void openPantallaInici() {
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PantallaEscollirGrup.this);
+        }
         Intent intent = new Intent(this, PantallaInici.class);
         startActivity(intent);
     }

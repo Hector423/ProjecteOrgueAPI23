@@ -37,6 +37,8 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
     private Button botoComprovar, botoContinuar;
     private int cont = 0;
 
+    private Musica musica = new Musica();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,6 +185,9 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         los botones otra vez
          */
         botoComprovar.setOnClickListener(v -> {
+            if(musica.isUnMutedGeneral()) {
+                musica.soundButton(PantallaPreguntaMultiple.this);
+            }
             if(cont == 5){
                 botoContinuar.setClickable(true);
                 botoContinuar.setEnabled(true);
@@ -224,6 +229,9 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
     }
 
     public void siguienePregunta(View v){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PantallaPreguntaMultiple.this);
+        }
         finish();
         startActivity(getIntent());
         GlobalVariables.cont++;

@@ -36,6 +36,8 @@ public class PreguntaClickImagenes extends AppCompatActivity {
     private Button botoComprovar, botoContinuar;
     private Drawable drawable1, drawable2, drawable3, drawable4, drawable5, drawable6;
     private boolean correcto = false;
+
+    private Musica musica = new Musica();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -125,7 +127,10 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                 Se comprueba que se ha seleccionado el boton correcto y se habilita el boton de continuar
                  */
                 botoComprovar.setOnClickListener(v -> {
-                    if(correcto) {
+                    if(musica.isUnMutedGeneral()) {
+                        musica.soundButton(PreguntaClickImagenes.this);
+                    }
+                    if(correcto){
                         botoContinuar.setClickable(true);
                         botoContinuar.setEnabled(true);
                         GlobalVariables.puntuacion++;
@@ -171,6 +176,9 @@ public class PreguntaClickImagenes extends AppCompatActivity {
 
 
     public void siguienePregunta(){
+        if(musica.isUnMutedGeneral()) {
+            musica.soundButton(PreguntaClickImagenes.this);
+        }
         finish();
         startActivity(getIntent());
         GlobalVariables.cont++;
