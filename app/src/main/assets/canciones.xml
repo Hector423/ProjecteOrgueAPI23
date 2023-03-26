@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<canciones>
+    <cancion>
+        <id>fondo</id>
+        <title>Cartoon - On &amp; On</title>
+        <active>true</active>
+    </cancion>
+    <cancion>
+        <id>boton</id>
+        <title>boton</title>
+        <active>false</active>
+    </cancion>
+</canciones>
