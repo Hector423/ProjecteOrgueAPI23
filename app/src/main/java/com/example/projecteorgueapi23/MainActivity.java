@@ -10,8 +10,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -35,7 +37,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class MainActivity extends AppCompatActivity {
 
     private Button iniciarPreguntes, preferencies;
-    private View nom;
+    private EditText nom;
     private ImageButton imageButton;
     private Uri uriImage;
     private ImageView imageView;
@@ -50,14 +52,16 @@ public class MainActivity extends AppCompatActivity {
         iniciarPreguntes = findViewById(R.id.botoInici);
         preferencies = findViewById(R.id.preferencies);
 
-        iniciarPreguntes.setOnClickListener(v ->
-                {
-                         openPreguntes();
+
+        iniciarPreguntes.setOnClickListener(v -> {
+                    GlobalVariables.nombre = nom.getText().toString();
+                    openPreguntes();
                 });
 
         preferencies.setOnClickListener(v -> {
             Intent intent = new Intent(this, Preferencies.class);
             startActivity(intent);
+
         });
 
 

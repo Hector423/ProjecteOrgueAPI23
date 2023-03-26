@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -87,6 +88,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                             GlobalVariables.puntuacion++;
                         }else{
+                            Toast toast = Toast.makeText(this, "Resposta incorrecta. Prova un altre cop!", Toast.LENGTH_LONG);
+                            toast.show();
                             GlobalVariables.puntuacion--;
                             GlobalVariables.fallos++;
                         }
@@ -104,6 +107,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                             GlobalVariables.puntuacion++;
                         }else{
+                            Toast toast = Toast.makeText(this, "Resposta incorrecta. Prova un altre cop!", Toast.LENGTH_LONG);
+                            toast.show();
                             GlobalVariables.puntuacion--;
                             GlobalVariables.fallos++;
                         }
@@ -121,6 +126,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                             GlobalVariables.puntuacion++;
                         }else{
+                            Toast toast = Toast.makeText(this, "Resposta incorrecta. Prova un altre cop!", Toast.LENGTH_LONG);
+                            toast.show();
                             GlobalVariables.puntuacion--;
                             GlobalVariables.fallos++;
                         }
@@ -136,6 +143,8 @@ public class PreguntasRespuestas extends AppCompatActivity {
                             comprovado = true;
                             GlobalVariables.puntuacion++;
                         }else{
+                            Toast toast = Toast.makeText(this, "Resposta incorrecta. Prova un altre cop!", Toast.LENGTH_LONG);
+                            toast.show();
                             GlobalVariables.puntuacion--;
                             GlobalVariables.fallos++;
                         }

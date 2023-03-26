@@ -1,6 +1,7 @@
 package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -64,6 +66,8 @@ public class PreguntaClickImagenes extends AppCompatActivity {
         Drawable drawable5 = ResourcesCompat.getDrawable(getResources(), R.drawable.fila_3_columna_1, null);
         Drawable drawable6 = ResourcesCompat.getDrawable(getResources(), R.drawable.fila_3_columna_2, null);
 
+
+
  /*
         Empezamos a leer el xml con las preguntas
          */
@@ -80,6 +84,8 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                 pregunta.setText(string);
                 Drawable[] drawables = {drawable1, drawable2, drawable3, drawable4, drawable5, drawable6};
                 ImageButton[] imageButtons = {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6};
+
+
 
                 /*
                 Comprobamos si es la pregunta correspondiente y añadimos las imagenes del plano,
@@ -128,8 +134,13 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                     if(correcto) {
                         botoContinuar.setClickable(true);
                         botoContinuar.setEnabled(true);
+                        for(int i = 0; i < imageButtons.length; i++){
+                            imageButtons[i].setEnabled(false);
+                        }
                         GlobalVariables.puntuacion++;
                     }else{
+                        Toast toast = Toast.makeText(this, "Resposta incorrecta. Prova un altre cop!", Toast.LENGTH_LONG);
+                        toast.show();
                         GlobalVariables.puntuacion--;
                         GlobalVariables.fallos++;
                     }

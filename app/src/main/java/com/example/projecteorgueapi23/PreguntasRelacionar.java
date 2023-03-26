@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -58,14 +59,16 @@ public class PreguntasRelacionar extends AppCompatActivity {
         imagen3 = findViewById(R.id.imageView11);
         imagen4 = findViewById(R.id.imageView12);
 
+        String opciones[] = getResources().getStringArray(R.array.respuestasArray);
 
-        adaptador = ArrayAdapter.createFromResource(this, R.array.respuestasArray, android.R.layout.simple_spinner_item);
-        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.layout_spinner_pregunta, opciones);
+//        adaptador = ArrayAdapter.createFromResource(this, R.array.respuestasArray, android.R.layout.simple_spinner_item);
+//        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
-        sp1.setAdapter(adaptador);
-        sp2.setAdapter(adaptador);
-        sp3.setAdapter(adaptador);
-        sp4.setAdapter(adaptador);
+        sp1.setAdapter(adapter);
+        sp2.setAdapter(adapter);
+        sp3.setAdapter(adapter);
+        sp4.setAdapter(adapter);
 
         botonRespuesta = findViewById(R.id.nextPregRel);
         btnComprova = findViewById(R.id.btnComrpovarRel);
@@ -108,8 +111,14 @@ public class PreguntasRelacionar extends AppCompatActivity {
                             comprovado = true;
                             GlobalVariables.puntuacion++;
                         }else{
+                            sp1.setSelection(0);
+                            sp2.setSelection(0);
+                            sp3.setSelection(0);
+                            sp4.setSelection(0);
                             GlobalVariables.puntuacion--;
                             GlobalVariables.fallos++;
+                            Toast toast = Toast.makeText(this, "Respostes incorrectes. Prova un altre cop!", Toast.LENGTH_LONG);
+                            toast.show();
                         }
                     });
                 }
