@@ -133,7 +133,6 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                 Se comprueba que se ha seleccionado el boton correcto y se habilita el boton de continuar
                  */
                 botoComprovar.setOnClickListener(v -> {
-                    if(correcto) {
                     if(musica.isUnMutedGeneral()) {
                         musica.soundButton(PreguntaClickImagenes.this);
                     }
