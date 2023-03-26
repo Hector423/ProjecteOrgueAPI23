@@ -4,4 +4,9 @@
         android:key="musica"
         android:title="Reproducir musica"
         android:summary="Se reproduce musica"/>
+
+    <Preference
+        android:title="Guardar"
+        android:key="botonSave"
+        />
 </PreferenceScreen>

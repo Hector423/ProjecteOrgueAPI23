@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
         preferencies = findViewById(R.id.preferencies);
+        if(musica.isUnMutedGeneral()) {
+            musica.playAudio(MainActivity.this);
+        }else{
+            musica.pausaAudio();
+        }
 
         preferenciasMusica();
 
@@ -72,10 +77,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         preferenciasMusica();
+        if(musica.isUnMutedGeneral()) {
+            musica.resumeAudio();
+        }else{
+            musica.pausaAudio();
+        }
     }
 
     public void openPreguntes(){
-        Log.i("Booleano", "" + musica.isUnMutedGeneral());
         if(musica.isUnMutedGeneral()) {
             musica.soundButton(MainActivity.this);
         }
@@ -89,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean prefMusica = pref.getBoolean("musica", true);
 
-        Log.i("Booleano", "" + prefMusica);
+//        Log.i("Booleano", "" + prefMusica);
 
         musica.setuNMutedGeneral(prefMusica);
     }

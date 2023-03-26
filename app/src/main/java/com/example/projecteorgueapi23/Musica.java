@@ -12,9 +12,8 @@ import java.util.Random;
 
 public class Musica {
     // MediaPlayer variables
-    private static final int cancion = R.raw.fondo;
-    private static MediaPlayer mp = null, mpBoton = null;
-    private static int audioIndex = 0;
+    private static MediaPlayer mp = null;
+    private static final int maxVolumen = 60;
     private static boolean muted = true;
     private static boolean unMutedGeneral = true;
 
@@ -25,21 +24,14 @@ public class Musica {
 
     static {
         mp = new MediaPlayer();
-        mp.setLooping(true);
-    }
-
-    public static MediaPlayer getMp() {
-        return mp;
     }
 
     public static void playAudio(Context context) {
-        try {
-            mp.reset();
-            mp.prepare();
-            mp.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        mp.reset();
+        mp.setVolume(maxVolumen,maxVolumen);
+        mp = MediaPlayer.create(context, R.raw.fondo);
+        mp.setLooping(true);
+        mp.start();
     }
 
     public static void pausaAudio() {
@@ -52,30 +44,6 @@ public class Musica {
         if (mp != null && !mp.isPlaying()) {
             mp.start();
         }
-    }
-
-    public static void PausePreferences(boolean boleano){
-        if(!boleano){
-            mp.pause();
-        }else{
-            mp.start();
-        }
-    }
-
-    public static void releaseMediaPlayer() {
-        if (mp != null) {
-            mp.stop();
-            mp.release();
-            mp = null;
-        }
-    }
-
-    public static boolean isMuted() {
-        return muted;
-    }
-
-    public static void setMuted(boolean muted) {
-        Musica.muted = muted;
     }
 
     public static boolean isUnMutedGeneral() {
@@ -96,13 +64,4 @@ public class Musica {
         });
     }
 
-    public static void stopButton(Context context) {
-        soundId = sp.load(context, R.raw.boton, 1);
-        sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                sp.stop(1);
-            }
-        });
-    }
 }
