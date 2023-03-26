@@ -111,6 +111,10 @@ public class PreguntasRelacionar extends AppCompatActivity {
                             sp4.setEnabled(false);
                             botonRespuesta.setEnabled(true);
                             comprovado = true;
+                            GlobalVariables.puntuacion++;
+                        }else{
+                            GlobalVariables.puntuacion--;
+                            GlobalVariables.fallos++;
                         }
                     });
                 }

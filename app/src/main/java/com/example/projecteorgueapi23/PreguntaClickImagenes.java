@@ -133,6 +133,10 @@ public class PreguntaClickImagenes extends AppCompatActivity {
                     if(correcto){
                         botoContinuar.setClickable(true);
                         botoContinuar.setEnabled(true);
+                        GlobalVariables.puntuacion++;
+                    }else{
+                        GlobalVariables.puntuacion--;
+                        GlobalVariables.fallos++;
                     }
                 });
 
