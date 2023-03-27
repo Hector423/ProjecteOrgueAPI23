@@ -10,7 +10,12 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.EditText;
+import android.widget.ImageButton;
+
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -36,11 +41,11 @@ import javax.xml.transform.stream.StreamResult;
 public class MainActivity extends AppCompatActivity {
 
     private Button iniciarPreguntes, preferencies;
-    private View nom;
-
     private ImageView listaMusica;
     private ArrayList<String> id = new ArrayList<>();
     private ArrayList<Boolean> active = new ArrayList<>();
+    private EditText nom;
+
     private Musica musica = new Musica();
 
     @Override
@@ -101,14 +106,16 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ListadoCanciones.class);
             startActivity(intent);
         });
-
+      
         iniciarPreguntes.setOnClickListener(v -> {
-                         openPreguntes();
+                    GlobalVariables.nombre = nom.getText().toString();
+                    openPreguntes();
                 });
 
         preferencies.setOnClickListener(v -> {
             Intent intent = new Intent(this, Preferencies.class);
             startActivity(intent);
+
         });
 
 
@@ -126,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openPreguntes(){
+        musica.soundButton(MainActivity.this);
         if(musica.isUnMutedGeneral()) {
             musica.soundButton(MainActivity.this);
         }

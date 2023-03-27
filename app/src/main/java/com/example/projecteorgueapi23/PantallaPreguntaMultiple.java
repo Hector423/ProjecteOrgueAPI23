@@ -1,18 +1,21 @@
 package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -34,7 +37,9 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
      */
     private TextView pregunta, nombreImagen1, nombreImagen2, nombreImagen3, nombreImagen4, nombreImagen5, nombreImagen6, nombreImagen7, nombreImagen8, nombreImagen9;
     private ImageButton imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9;
+    private Drawable drawable1, drawable2, drawable3,drawable4,drawable5,drawable6,drawable7,drawable8,drawable9;
     private Button botoComprovar, botoContinuar;
+
     private int cont = 0;
 
     private Musica musica = new Musica();
@@ -68,12 +73,29 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         imagen8 = findViewById(R.id.imageButton8);
         imagen9 = findViewById(R.id.imageButton9);
 
+        Resources res = getResources();
+        //Añadimos la imagenes
+        drawable1 = ResourcesCompat.getDrawable(res, R.drawable.poms_registres, null);
+        drawable2 = ResourcesCompat.getDrawable(res, R.drawable.caixa_expressiu, null);
+        drawable3 = ResourcesCompat.getDrawable(res, R.drawable.secrets, null);
+        drawable4 = ResourcesCompat.getDrawable(res, R.drawable.pedaler, null);
+        drawable5 = ResourcesCompat.getDrawable(res, R.drawable.pedal_expressio, null);
+        drawable6 = ResourcesCompat.getDrawable(res, R.drawable.barnilles, null);
+        drawable7 = ResourcesCompat.getDrawable(res, R.drawable.tubs , null);
+        drawable8 = ResourcesCompat.getDrawable(res, R.drawable.manxa_orgue01, null);
+        drawable9 = ResourcesCompat.getDrawable(res, R.drawable.manuals, null);
+
 
         botoComprovar = findViewById(R.id.boto);
         botoContinuar = findViewById(R.id.botoContinuar);
 
+        ImageButton[] imatges = {imagen1, imagen2, imagen3, imagen4, imagen5, imagen6, imagen7, imagen8, imagen9};
+        Drawable[] drawables = {drawable1, drawable2, drawable3, drawable4, drawable5, drawable6, drawable7, drawable8, drawable9};
 
-
+        for(int i = 0; i < imatges.length; i++){
+            imatges[i].setImageDrawable(drawables[i]);
+            imatges[i].setBackground(null);
+        }
         /*
         Empezamos a leer el xml con las preguntas
          */
@@ -91,27 +113,8 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
                 if(elm.equals(nList.item(7))){
                     String textoPregunta = getNodeValue("preg", elm);
                     pregunta.setText(textoPregunta);
-                    Resources res = getResources();
-                    //Añadimos la imagenes
-                    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.poms_registres, null);
-                    Drawable drawable2 = ResourcesCompat.getDrawable(res, R.drawable.caixa_expressiu, null);
-                    Drawable drawable3 = ResourcesCompat.getDrawable(res, R.drawable.secrets, null);
-                    Drawable drawable4 = ResourcesCompat.getDrawable(res, R.drawable.pedaler, null);
-                    Drawable drawable5 = ResourcesCompat.getDrawable(res, R.drawable.pedal_expressio, null);
-                    Drawable drawable6 = ResourcesCompat.getDrawable(res, R.drawable.barnilles, null);
-                    Drawable drawable7 = ResourcesCompat.getDrawable(res, R.drawable.tubs , null);
-                    Drawable drawable8 = ResourcesCompat.getDrawable(res, R.drawable.manxa_orgue01, null);
-                    Drawable drawable9 = ResourcesCompat.getDrawable(res, R.drawable.manuals, null);
 
-                    imagen1.setImageDrawable(drawable);
-                    imagen2.setImageDrawable(drawable2);
-                    imagen3.setImageDrawable(drawable3);
-                    imagen4.setImageDrawable(drawable4);
-                    imagen5.setImageDrawable(drawable5);
-                    imagen6.setImageDrawable(drawable6);
-                    imagen7.setImageDrawable(drawable7);
-                    imagen8.setImageDrawable(drawable8);
-                    imagen9.setImageDrawable(drawable9);
+
 
                     //Añadimos los nombres de cada imagen al textView que tienen debajo
                     TextView[] textViews = {nombreImagen1, nombreImagen2, nombreImagen3,  nombreImagen4, nombreImagen5, nombreImagen6, nombreImagen7, nombreImagen8, nombreImagen9};
@@ -143,38 +146,47 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         si es la respuesta correcta y hacemos que solo se pueda clicar una vez
          */
         imagen1.setOnClickListener(v -> {
+            imagen1.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont++;
             imagen1.setEnabled(false);
         });
         imagen2.setOnClickListener(v -> {
+            imagen2.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont--;
             imagen2.setEnabled(false);
         });
         imagen3.setOnClickListener(v -> {
+            imagen3.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont--;
             imagen3.setEnabled(false);
         });
         imagen4.setOnClickListener(v -> {
+            imagen4.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont++;
             imagen4.setEnabled(false);
         });
         imagen5.setOnClickListener(v -> {
+            imagen5.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont++;
             imagen5.setEnabled(false);
         });
         imagen6.setOnClickListener(v -> {
+            imagen6.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont--;
             imagen6.setEnabled(false);
         });
         imagen7.setOnClickListener(v -> {
+            imagen7.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont++;
             imagen7.setEnabled(false);
         });
         imagen8.setOnClickListener(v -> {
+            imagen8.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont--;
             imagen8.setEnabled(false);
         });
         imagen9.setOnClickListener(v -> {
+            imagen9.setBackground(ContextCompat.getDrawable(PantallaPreguntaMultiple.this, R.drawable.borde_boton));
             cont++;
             imagen9.setEnabled(false);
         });
@@ -185,26 +197,33 @@ public class PantallaPreguntaMultiple extends AppCompatActivity {
         los botones otra vez
          */
         botoComprovar.setOnClickListener(v -> {
+            Log.i("log", ""+cont);
+
             if(musica.isUnMutedGeneral()) {
                 musica.soundButton(PantallaPreguntaMultiple.this);
             }
+
             if(cont == 5){
                 botoContinuar.setClickable(true);
                 botoContinuar.setEnabled(true);
                 GlobalVariables.puntuacion++;
+                for(int i = 0; i < imatges.length; i++){
+                    imatges[i].setEnabled(false);
+                }
             }else{
+
                 cont = 0;
-                imagen1.setEnabled(true);
-                imagen2.setEnabled(true);
-                imagen3.setEnabled(true);
-                imagen4.setEnabled(true);
-                imagen5.setEnabled(true);
-                imagen6.setEnabled(true);
-                imagen7.setEnabled(true);
-                imagen8.setEnabled(true);
-                imagen9.setEnabled(true);
-                GlobalVariables.fallos--;
+
+                for(int i = 0; i < imatges.length; i++){
+                    imatges[i].setEnabled(true);
+                    imatges[i].setBackground(null);
+                }
+
+                GlobalVariables.fallos++;
                 GlobalVariables.puntuacion--;
+
+                Toast toast = Toast.makeText(this, "Respostes incorrectes. Prova un altre cop!", Toast.LENGTH_LONG);
+                toast.show();
             }
         });
 
