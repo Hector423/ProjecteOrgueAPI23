@@ -1,23 +1,22 @@
 package com.example.projecteorgueapi23;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.AssetFileDescriptor;
+
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.util.Log;
 
-import java.io.IOException;
-import java.util.Random;
 
 public class Musica {
     // MediaPlayer variables
     private static MediaPlayer mp = null;
     private static final float maxVolumen = 0.30f;
     private static boolean muted = true;
+    private static int cancion = 0;
     private static boolean unMutedGeneral = true;
-
     private static boolean firstReproduced = false;
+
 
     // SoundPool variables
     private static SoundPool sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
@@ -28,9 +27,14 @@ public class Musica {
         mp = new MediaPlayer();
     }
 
+
+    public void getCancion(Integer cancionUrl){
+        this.cancion = cancionUrl;
+    }
+
     public static void playAudio(Context context) {
         mp.reset();
-        mp = MediaPlayer.create(context, R.raw.fondo);
+        mp = MediaPlayer.create(context, cancion);
         mp.setLooping(true);
         mp.start();
         mp.setVolume(maxVolumen,maxVolumen);
