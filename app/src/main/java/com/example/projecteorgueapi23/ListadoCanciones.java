@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -30,12 +32,18 @@ public class ListadoCanciones extends AppCompatActivity {
     private ArrayList<String> title = new ArrayList<>();
     private ArrayList<Boolean> active = new ArrayList<>();
 
-    private ImageView imgPlay;
+    private Button salirListado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_canciones);
+
+        salirListado = findViewById(R.id.tornaListado);
+
+        salirListado.setOnClickListener(view -> {
+            finish();
+        });
 
         try {
             InputStream input = getAssets().open("canciones.xml");
