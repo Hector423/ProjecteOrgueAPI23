@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Document;
@@ -61,6 +63,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
     public void onBindViewHolder(@NonNull CustomVH holder, int position) {
         holder.title.setText(title.get(position));
         holder.imgPlay.setOnClickListener( v -> {
+            if(v.equals(id.get(position))){
+                holder.imgPlay.setImageResource(R.drawable.resume_button);
+            }else{
+                holder.imgPlay.setImageResource(R.drawable.boton_play);
+            }
             Constants.setMusica(id.get(position));
             active.set(position, true);
             Constants.setFiltroBotonClicado(true);
