@@ -2,6 +2,7 @@ package com.example.projecteorgueapi23;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -206,5 +207,14 @@ public class MainActivity extends AppCompatActivity {
         boolean prefMusica = pref.getBoolean("musica", true);
 
         musica.setuNMutedGeneral(prefMusica);
+    }
+
+    public void changeMusic(Context context){
+        if(Constants.getMusica() != null) {
+            int musica_id = context.getResources().getIdentifier(Constants.getMusica(), "raw",
+                    context.getPackageName());
+            Log.i("", "Cancion " + musica_id);
+            musica.getCancion(musica_id);
+        }
     }
 }

@@ -24,6 +24,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
     private ArrayList<Boolean> active = new ArrayList<>();
     private Context context;
     private Musica musica;
+    MainActivity main = new MainActivity();
 
     public CustomAdapter(Context context, ArrayList<String> id, ArrayList<String> title, ArrayList<Boolean> active) {
         this.context = context;
@@ -46,6 +47,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
             Constants.setMusica(id.get(position));
             active.set(position, true);
             Constants.setFiltroBotonClicado(true);
+
+            main.changeMusic(context);
+            if(musica.isUnMutedGeneral()) {
+                if(Constants.getFiltroBotonClicado()) {
+                    musica.playAudio(context);
+                    Constants.setFiltroBotonClicado(false);
+                }else{
+                    musica.resumeAudio();
+                }
+            }else{
+                musica.pausaAudio();
+            }
         });
     }
 
