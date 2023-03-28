@@ -36,7 +36,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
+// Declarar variabkes
 public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
     private ArrayList<String> id = new ArrayList<>();
     private ArrayList<String> title = new ArrayList<>();
@@ -45,6 +45,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
     private Musica musica;
     MainActivity main = new MainActivity();
 
+    // Constructor
     public CustomAdapter(Context context, ArrayList<String> id, ArrayList<String> title, ArrayList<Boolean> active) {
         this.context = context;
         this.id = id;
@@ -52,6 +53,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
         this.active = active;
     }
 
+    // Obtiene la vista o layout que utilizara
     @NonNull
     @Override
     public CustomVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,6 +61,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
         return new CustomVH(view).linkAdapter(this);
     }
 
+    // Utiliza las variables que tiene el layout y la clase java
     @Override
     public void onBindViewHolder(@NonNull CustomVH holder, int position) {
         holder.title.setText(title.get(position));
@@ -131,6 +134,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
         });
     }
 
+    // Obtiene la cantidad de las variables
     @Override
     public int getItemCount() {
         return id.size();
@@ -138,6 +142,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
 
 }
 
+// Clase para añadir los objetos a las variables
 class CustomVH extends RecyclerView.ViewHolder{
     TextView title;
     ImageView imgPlay;
