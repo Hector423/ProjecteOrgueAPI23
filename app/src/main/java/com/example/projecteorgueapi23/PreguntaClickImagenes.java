@@ -36,7 +36,6 @@ public class PreguntaClickImagenes extends AppCompatActivity {
     private ImageButton imagen1, imagen2, imagen3, imagen4, imagen5, imagen6;
     private ImageView imagenPregunta;
     private Button botoComprovar, botoContinuar;
-    private Drawable drawable1, drawable2, drawable3, drawable4, drawable5, drawable6;
     private boolean correcto = false;
 
     private Musica musica = new Musica();
@@ -169,6 +168,12 @@ public class PreguntaClickImagenes extends AppCompatActivity {
 
     }
 
+    /**
+     * Metode per agafar el valor del node
+     * @param tag
+     * @param element
+     * @return
+     */
     protected String getNodeValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag);
         Node node = nodeList.item(0);
@@ -185,7 +190,9 @@ public class PreguntaClickImagenes extends AppCompatActivity {
         return "";
     }
 
-
+    /**
+     * Metode per passar a la següent pregunta
+     */
     public void siguienePregunta(){
         if(musica.isUnMutedGeneral()) {
             musica.soundButton(PreguntaClickImagenes.this);

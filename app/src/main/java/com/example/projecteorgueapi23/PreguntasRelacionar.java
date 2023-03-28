@@ -31,6 +31,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class PreguntasRelacionar extends AppCompatActivity {
+    /**
+     * Declarem les variables
+     */
     private TextView titulo, t1, t2, t3, t4;
     private Button botonRespuesta, btnComprova;
     private ImageView imagen1, imagen2, imagen3, imagen4;
@@ -46,6 +49,9 @@ public class PreguntasRelacionar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta_relacionar);
 
+        /**
+         * Assignem les variables al layout
+         */
         titulo = findViewById(R.id.titleRel);
         t1 = findViewById(R.id.tRel1);
         t2 = findViewById(R.id.tRel2);

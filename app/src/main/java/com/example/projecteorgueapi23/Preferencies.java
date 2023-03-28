@@ -18,7 +18,7 @@ public class Preferencies extends PreferenceActivity
         addPreferencesFromResource(R.xml.preferencies);
 
         /**
-         * Per les preferencies agafem 
+         * Per les preferencies agafem el checkbox per comprovar si esta marcat o no
          */
         Preference button = findPreference("botonSave");
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {

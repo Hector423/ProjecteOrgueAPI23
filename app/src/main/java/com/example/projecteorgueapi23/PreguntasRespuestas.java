@@ -31,6 +31,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class PreguntasRespuestas extends AppCompatActivity {
 
+    /**
+     * Declarem variables
+     */
     private TextView textPregunta;
     private Button botonRespuesta, btnComprova;
     private ImageView imagen;
@@ -47,6 +50,9 @@ public class PreguntasRespuestas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pregunta);
 
+        /**
+         * Assignem les variables al layout
+         */
         textPregunta = findViewById(R.id.textPregunta);
         imagen = findViewById(R.id.imatgePregunta);
         rgp = findViewById(R.id.caixaRespostes);
