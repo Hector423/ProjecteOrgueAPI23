@@ -63,7 +63,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomVH>{
     public void onBindViewHolder(@NonNull CustomVH holder, int position) {
         holder.title.setText(title.get(position));
         holder.imgPlay.setOnClickListener( v -> {
-            if(v.equals(id.get(position))){
+            if(!v.equals(id.get(position))){
                 holder.imgPlay.setImageResource(R.drawable.resume_button);
             }else{
                 holder.imgPlay.setImageResource(R.drawable.boton_play);
