@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openPreguntes(){
-        musica.soundButton(MainActivity.this);
         if(musica.isUnMutedGeneral()) {
             musica.soundButton(MainActivity.this);
         }
