@@ -17,6 +17,9 @@ public class Preferencies extends PreferenceActivity
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferencies);
 
+        /**
+         * Per les preferencies agafem 
+         */
         Preference button = findPreference("botonSave");
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override

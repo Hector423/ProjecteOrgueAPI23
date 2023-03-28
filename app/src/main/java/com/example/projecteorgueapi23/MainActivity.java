@@ -40,6 +40,9 @@ import javax.xml.transform.stream.StreamResult;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*
+    Declarem variables
+     */
     private Button iniciarPreguntes, preferencies;
     private ImageView listaMusica;
     private ArrayList<String> id = new ArrayList<>();
@@ -51,13 +54,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
+        /*
+        Assignem les variables amb el layout
+         */
         nom = findViewById(R.id.AfegirNom);
         iniciarPreguntes = findViewById(R.id.botoInici);
         listaMusica = findViewById(R.id.botonListado);
 
         try {
+            /*
+            Llegim el fitxer canciones.xml per agafar les cançons
+             */
             InputStream input = getAssets().open("canciones.xml");
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
@@ -67,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
             for(int i = 0; i<nList.getLength(); i++){
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE){
+                    /*
+                    Recorrem els nodes del xml
+                     */
                     Element elm = (Element) nList.item(i);
                     id.add(elm.getElementsByTagName("id").item(0).getTextContent());
                     active.add(Boolean.valueOf(elm.getElementsByTagName("active").item(0).getTextContent()));
@@ -86,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        /*
+        Comprovem les preferencies per veure si reproduir la música o no
+         */
         preferencies = findViewById(R.id.preferencies);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.edit().putBoolean("musica", prefs.getBoolean("musica", true)).commit();
@@ -102,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
         preferenciasMusica();
 
+        /*
+        S'assignen les accions dels botons
+         */
         listaMusica.setOnClickListener(v -> {
             Intent intent = new Intent(this, ListadoCanciones.class);
             startActivity(intent);
@@ -121,6 +140,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+    Aquests son els diferents metodes que es criden en la classe
+     */
     @Override
     protected void onResume() {
         super.onResume();

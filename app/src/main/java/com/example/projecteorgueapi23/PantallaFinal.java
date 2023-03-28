@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 public class PantallaFinal extends AppCompatActivity {
 
+    /*
+    Declarem les variables
+     */
     private TextView encerts, errors, nom;
     private Button botonInici, botonSalir;
 
@@ -19,11 +22,18 @@ public class PantallaFinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_final);
 
+        /*
+        Assignem les variables amb el layout
+         */
         nom = findViewById(R.id.nomJugador);
         encerts = findViewById(R.id.numEncerts);
         errors = findViewById(R.id.numErrors);
         int num = GlobalVariables.puntuacion;
         int fallos = GlobalVariables.fallos;
+
+        /*
+        Afegim els marcadors de puntuació, errors i el nom per que es vegin a la pantalla final
+         */
         nom.setText(GlobalVariables.nombre);
         encerts.setText(String.valueOf(num));
         errors.setText(String.valueOf(fallos));
@@ -31,7 +41,9 @@ public class PantallaFinal extends AppCompatActivity {
         botonInici = findViewById(R.id.botoTornarAlMain);
         botonSalir = findViewById(R.id.botoSortirApp);
 
-
+        /*
+        Assignem funcions als botons
+        */
         botonInici.setOnClickListener( v -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

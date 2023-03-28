@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PantallaInici extends AppCompatActivity {
 
+    /**
+     * Declarem variables
+     */
     private Button botoInfo, botoIniciarPreguntes;
     private Musica musica = new Musica();
 
@@ -15,9 +18,15 @@ public class PantallaInici extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_inici);
+        /**
+         * Assignem les variables al layout
+         */
         botoInfo = findViewById(R.id.botoInfo);
         botoIniciarPreguntes = findViewById(R.id.botoIniciPreguntes);
 
+        /**
+         * Assginem als botons els seus metodes corresponents
+         */
         botoInfo.setOnClickListener(v ->
         {
             openPantallaInformació();
@@ -29,6 +38,9 @@ public class PantallaInici extends AppCompatActivity {
         });
     }
 
+    /**
+     * Els metodes dels botons que obriran les pantalles corresponents
+     */
     public void openPantallaInformació(){
         if(musica.isUnMutedGeneral()) {
             musica.soundButton(PantallaInici.this);
