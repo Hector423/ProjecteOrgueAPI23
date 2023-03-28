@@ -14,7 +14,7 @@ public class PantallaFinal extends AppCompatActivity {
      */
     private TextView encerts, errors, nom;
     private Button botonInici, botonSalir;
-
+    private Musica musica = new Musica();
 
 
     @Override
@@ -54,20 +54,12 @@ public class PantallaFinal extends AppCompatActivity {
         });
 
         botonSalir.setOnClickListener( v  -> {
+            musica.pausaAudio();
             finishAffinity();
             GlobalVariables.nombre = "";
             GlobalVariables.puntuacion = 0;
             GlobalVariables.fallos = 0;
             GlobalVariables.cont = 0;
         });
-
-
-
     }
-
-
-
-
-
-
 }
